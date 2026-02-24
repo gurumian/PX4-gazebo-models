@@ -37,6 +37,20 @@
           </friction>
         </surface>
       </collision>
+      <!-- Visual only: front (nose) marker. Body FLU: +X = forward -->
+      <visual name="nose_marker">
+        <pose>0.09 0 0.04 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.025 0.04 0.008</size>
+          </box>
+        </geometry>
+        <material>
+          <diffuse>1 0.2 0.1</diffuse>
+          <specular>0.3 0.1 0.1</specular>
+          <emissive>0.4 0 0</emissive>
+        </material>
+      </visual>
       <!-- Ducts fixed to body. Z = duct center; prop at same Z (duct h=37.6mm, 1단 center 0.0788, 2단 center 0.1214 = 1단 top 0.0976 + 5mm gap + half duct) -->
       <visual name="duct_0_visual">
         <pose>0.078 0.078 0.0788 3.14159 0 0</pose>
