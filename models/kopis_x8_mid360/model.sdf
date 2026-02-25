@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='kopis_x8_mid360'>
+    <include merge='true'>
+      <uri>model://kopis_x8</uri>
+    </include>
+    <!-- Mid360 on top of body, roll 180° for correct mesh orientation -->
+    <include merge='true'>
+      <uri>model://mid360</uri>
+      <pose relative_to='base_link'>0 0 0.2 1.5708 0 0</pose>
+    </include>
+    <joint name='mid360_joint' type='fixed'>
+      <parent>base_link</parent>
+      <child>mid360_link</child>
+      <pose relative_to='base_link'>0 0 0.2 1.5708 0 0</pose>
+    </joint>
+  </model>
+</sdf>
