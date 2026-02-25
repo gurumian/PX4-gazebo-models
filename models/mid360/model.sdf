@@ -60,6 +60,11 @@
         </ray>
         <always_on>true</always_on>
         <visualize>true</visualize>
+        <plugin filename="livox_gz_plugin" name="livox_gz_plugin::LivoxPointsPlugin">
+          <scan_topic>/mid360/points</scan_topic>
+          <ros_topic>livox/lidar</ros_topic>
+          <frame_id>lidar_link</frame_id>
+        </plugin>
       </sensor>
     </link>
   </model>
