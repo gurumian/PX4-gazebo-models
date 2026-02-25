@@ -9,9 +9,9 @@
       <uri>model://mid360</uri>
       <pose relative_to='base_link'>0 0 0.2 1.5708 0 0</pose>
     </include>
-    <joint name='mid360_joint' type='fixed'>
+    <joint name='lidar_joint' type='fixed'>
       <parent>base_link</parent>
-      <child>mid360_link</child>
+      <child>lidar_link</child>
       <pose relative_to='base_link'>0 0 0.2 1.5708 0 0</pose>
     </joint>
   </model>

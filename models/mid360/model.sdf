@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sdf version='1.9'>
   <model name='mid360'>
-    <link name='mid360_link'>
+    <link name='lidar_link'>
       <pose>0 0 0 0 0 0</pose>
       <inertial>
         <mass>0.1</mass>
@@ -27,7 +27,7 @@
         </material>
       </visual>
       <sensor name='mid360' type='gpu_lidar'>
-        <gz_frame_id>mid360_link</gz_frame_id>
+        <gz_frame_id>lidar_link</gz_frame_id>
         <pose>0 0 0 0 0 0</pose>
         <update_rate>10</update_rate>
         <topic>mid360</topic>
