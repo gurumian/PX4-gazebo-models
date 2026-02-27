@@ -4,10 +4,10 @@
     <include merge='true'>
       <uri>model://kopis_x8</uri>
     </include>
-    <!-- Mid360 on top of body, roll 180° for correct mesh orientation -->
+    <!-- Mid360 on top of body; orientation (roll 90° etc.) defined in model://mid360 -->
     <include merge='true'>
       <uri>model://mid360</uri>
-      <pose relative_to='base_link'>0 0 0.2 1.5708 0 0</pose>
+      <pose relative_to='base_link'>0 0 0.2 0 0 0</pose>
     </include>
     <include merge='true'>
       <uri>model://mono_cam</uri>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sdf version='1.9'>
   <model name='mid360'>
+    <!-- Roll 90° for mount orientation; visual yaw 180° for mesh -->
     <link name='lidar_link'>
       <pose>0 0 0 0 0 0</pose>
       <inertial>
@@ -15,6 +16,7 @@
         </inertia>
       </inertial>
       <visual name='mid360_visual'>
+        <pose>0 0 0 1.5708 0 3.14159</pose>
         <geometry>
           <mesh>
             <uri>model://mid360/meshes/mid-360-asm.stl</uri>
