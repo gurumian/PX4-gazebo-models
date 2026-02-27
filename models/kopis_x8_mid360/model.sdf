@@ -16,7 +16,7 @@
     <joint name='lidar_joint' type='fixed'>
       <parent>base_link</parent>
       <child>lidar_link</child>
-      <pose relative_to='base_link'>0 0 0.2 1.5708 0 0</pose>
+      <pose relative_to='base_link'>0 0 0.2 0 0 0</pose>
     </joint>
     <joint name='camera_joint' type='fixed'>
       <parent>base_link</parent>
