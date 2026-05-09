@@ -33,7 +33,7 @@
 
 - **CA 좌표계**: PX4는 body **FRD** (X 앞, Y 오른쪽, Z 아래). Gazebo SDF는 **FLU** (Y 왼쪽).  
   SDF에서 (x, y) = 앞왼쪽이면 PX4에서는 `CA_ROTOR*_PX = x`, `CA_ROTOR*_PY = -y` 로 넣어야 함.
-- **로터 순서**: SDF의 `rotor_0` 위치와 에어프레임의 `CA_ROTOR0` 위치가 **같은 몸체 위치**인지 확인.
+- **로터 순서 (PX4 제네릭 코액셜 X = `12001_octo_cox`와 동일)**: `CA_ROTOR0..3` = 상단 **FR, FL, BL, BR**; `CA_ROTOR4..7` = 하단 **FL, FR, BR, BL**. Gazebo `kopis_x8/model.sdf` 의 `motorNumber` 0..7이 위와 같은 물리 로터에 연결됨. `kopis_x8_base` 의 `rotor_*` 링크 이름은 메쉬 조립 순서(팔별 하단/상단)를 그대로 쓰고, `kopis_x8` 플러그인이 인덱스를 매핑함.
 - **회전 방향(KM)**: 같은 암의 두 로터는 반대 방향(ccw/cw, KM ±0.05)으로 설정해 토크 상쇄.
 - **무게/관성**: `kopis_x8_base/model.sdf` 의 `mass`, `inertia` 를 실기와 비슷하게 맞추기.
 - **이득**: `MPC_THR_HOVER`(호버 스로틀), `MC_ROLL_P` 등은 무거우면 조금 낮추는 쪽으로 튜닝.

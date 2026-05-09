@@ -281,6 +281,7 @@
       </sensor>
     </link>
     <!-- Quad X 4 arms, 2 rotors per arm (2-tier). Body FLU: X fwd, Y left. -->
+    <!-- PX4 CA_ROTOR / gz motorNumber order = 12001_octo_cox (see model://kopis_x8): 0=FR↑ 1=FL↑ 2=BL↑ 3=BR↑ 4=FL↓ 5=FR↓ 6=BR↓ 7=BL↓ (FRD corners). -->
     <!-- Arm 0 front-left -->
     <link name="rotor_0">
       <gravity>true</gravity>
