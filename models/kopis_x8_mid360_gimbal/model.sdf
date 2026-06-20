@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='kopis_x8_mid360_gimbal'>
+    <include merge='true'>
+      <uri>model://kopis_x8</uri>
+    </include>
+    <!-- Mid360 on top of body; orientation (roll 90° etc.) defined in model://mid360 -->
+    <include merge='true'>
+      <uri>model://mid360</uri>
+      <pose relative_to='base_link'>0 0 0.2 0 0 0</pose>
+    </include>
+  <!-- Gimbal: x500_gimbal pattern (yaw 180°, forward +X). z=0.25 (+200mm from 0.05). -->
+    <include merge='true'>
+      <uri>model://gimbal_v4l2</uri>
+      <pose relative_to='base_link'>0.12 0 0.25 0 0 3.14159</pose>
+    </include>
+    <joint name='lidar_joint' type='fixed'>
+      <parent>base_link</parent>
+      <child>lidar_link</child>
+      <pose relative_to='base_link'>0 0 0.2 0 0 0</pose>
+    </joint>
+    <joint name="GimbalAttachJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>cgo3_mount_link</child>
+    </joint>
+  </model>
+</sdf>
