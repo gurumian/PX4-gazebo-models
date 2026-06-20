@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<sdf version='1.10'>
+  <model name='rocket_fin'>
+    <link name='fin_link'>
+      <!-- Root at origin (y=0) on fuselage; span +Y; chord along +Z -->
+      <visual name='wing_panel_visual'>
+        <pose>0 0.085 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.006 0.17 0.22</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.175 0.175 0.175 1.0</ambient>
+          <diffuse>0.175 0.175 0.175 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name='motor_mount_visual'>
+        <pose>0 0.17 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.03</length>
+            <radius>0.018</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.25 0.25 0.28 1.0</ambient>
+          <diffuse>0.25 0.25 0.28 1.0</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
