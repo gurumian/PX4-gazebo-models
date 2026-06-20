@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.10'>
+  <model name='quadtailsitter_gimbal'>
+    <include merge='true'>
+      <uri>model://quadtailsitter</uri>
+    </include>
+    <!-- Tailsitter body frame (AdvancedLiftDrag): forward +Z, up -X (dorsal), span ±Y.
+         Hover: nose/heading (+Z) points toward the sky — FW attitude, not MC +X forward.
+         Mount on body.dae dorsal shelf (-X back, ~-0.064 0 0.21). Pitch +90°: boresight +Z (FW forward). -->
+    <include merge='true'>
+      <uri>model://gimbal_v4l2</uri>
+      <pose relative_to='base_link'>-0.064 0 0.21 0 1.5707 3.14159</pose>
+    </include>
+    <joint name="GimbalAttachJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>cgo3_mount_link</child>
+    </joint>
+  </model>
+</sdf>
