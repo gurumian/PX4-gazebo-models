@@ -407,5 +407,34 @@
       <name>tugbot</name>
       <pose>2.75268 1.0014 0.132279 0 0 0</pose>
     </include>
+
+    <!-- Pedestrian walking depot aisles (Gazebo actor; no physics, visible to cameras/LiDAR). -->
+    <actor name="pedestrian_wanderer">
+      <pose>8.5 1.0 0.95 0 0 0</pose>
+      <skin>
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walk">
+        <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walk" tension="0.6">
+          <waypoint><time>0</time><pose>0 0 0 0 0 0</pose></waypoint>
+          <waypoint><time>4</time><pose>4 0 0 0 0 0</pose></waypoint>
+          <waypoint><time>4.5</time><pose>4 0 0 0 0 1.57</pose></waypoint>
+          <waypoint><time>7</time><pose>4 2.5 0 0 0 1.57</pose></waypoint>
+          <waypoint><time>7.5</time><pose>4 2.5 0 0 0 3.14</pose></waypoint>
+          <waypoint><time>10</time><pose>0 2.5 0 0 0 3.14</pose></waypoint>
+          <waypoint><time>10.5</time><pose>0 2.5 0 0 0 -1.57</pose></waypoint>
+          <waypoint><time>13</time><pose>0 0 0 0 0 -1.57</pose></waypoint>
+          <waypoint><time>13.5</time><pose>0 0 0 0 0 0</pose></waypoint>
+        </trajectory>
+      </script>
+    </actor>
   </world>
 </sdf>
