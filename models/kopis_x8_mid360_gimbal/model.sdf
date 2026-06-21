@@ -9,6 +9,12 @@
       <uri>model://mid360</uri>
       <pose relative_to='base_link'>0 0 0.2 0 0 0</pose>
     </include>
+    <!-- Keep base mono camera on /dev/video10 (same as kopis_x8_mid360). -->
+    <include>
+      <uri>model://mono_cam</uri>
+      <name>mono_cam_front</name>
+      <pose relative_to='base_link'>0.12 0 0.15 0 0 0</pose>
+    </include>
   <!-- Gimbal: x500_gimbal pattern (yaw 180°, forward +X). z=0.25 (+200mm from 0.05). -->
     <include merge='true'>
       <uri>model://gimbal_v4l2</uri>
@@ -18,6 +24,11 @@
       <parent>base_link</parent>
       <child>lidar_link</child>
       <pose relative_to='base_link'>0 0 0.2 0 0 0</pose>
+    </joint>
+    <joint name='camera_joint' type='fixed'>
+      <parent>base_link</parent>
+      <child>mono_cam_front::camera_link</child>
+      <pose relative_to='base_link'>0.12 0 0.15 0 0 0</pose>
     </joint>
     <joint name="GimbalAttachJoint" type="fixed">
       <parent>base_link</parent>

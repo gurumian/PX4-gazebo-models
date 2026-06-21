@@ -280,7 +280,7 @@
         <update_rate>30</update_rate>
         <visualize>true</visualize>
         <plugin filename="libv4l2_gz_plugin.so" name="v4l2_gz_plugin::V4L2CameraPlugin">
-          <device>/dev/video10</device>
+          <device>/dev/video11</device>
           <topic>camera/image_raw</topic>
           <pixel_format>yuyv</pixel_format>
         </plugin>
