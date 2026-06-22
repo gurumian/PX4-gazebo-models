@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='ground_radar_station'>
+    <static>true</static>
+    <pose>0 0 0 0 0 0</pose>
+
+    <!-- Tower base -->
+    <link name='base_link'>
+      <pose>0 0 2.5 0 0 0</pose>
+      <collision name='tower_collision'>
+        <geometry>
+          <cylinder>
+            <radius>0.4</radius>
+            <length>5.0</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='tower_visual'>
+        <geometry>
+          <cylinder>
+            <radius>0.4</radius>
+            <length>5.0</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <diffuse>0.35 0.35 0.38 1</diffuse>
+        </material>
+      </visual>
+    </link>
+
+    <!-- Radar head (world-fixed, z-up; scans 360 deg azimuth, 0-50 deg elevation) -->
+    <link name='radar_link'>
+      <pose>0 0 5.2 0 0 0</pose>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>1e-4</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-4</iyy>
+          <iyz>0</iyz>
+          <izz>1e-4</izz>
+        </inertia>
+      </inertial>
+      <visual name='radar_head_visual'>
+        <geometry>
+          <box>
+            <size>0.6 0.6 0.4</size>
+          </box>
+        </geometry>
+        <material>
+          <diffuse>0.15 0.2 0.25 1</diffuse>
+        </material>
+      </visual>
+      <sensor name='surveillance_radar' type='gpu_lidar'>
+        <gz_frame_id>radar_link</gz_frame_id>
+        <pose>0 0 0 0 0 0</pose>
+        <topic>/radar/points</topic>
+        <update_rate>5</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.14159265</min_angle>
+              <max_angle>3.14159265</max_angle>
+            </horizontal>
+            <vertical>
+              <!-- 0 deg (horizon) to +50 deg (high altitude at range) -->
+              <samples>32</samples>
+              <resolution>1</resolution>
+              <min_angle>0.0</min_angle>
+              <max_angle>0.872664626</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>10</min>
+            <max>2000</max>
+            <resolution>2.0</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>3.0</stddev>
+          </noise>
+        </ray>
+        <always_on>1</always_on>
+        <visualize>true</visualize>
+      </sensor>
+    </link>
+
+    <joint name='radar_mount_joint' type='fixed'>
+      <parent>base_link</parent>
+      <child>radar_link</child>
+      <pose>0 0 2.7 0 0 0</pose>
+    </joint>
+  </model>
+</sdf>

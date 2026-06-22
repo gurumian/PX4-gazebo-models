@@ -45,6 +45,12 @@
         <relative_to>park</relative_to>
       </pose>
     </include>
+    <!-- Fixed ground radar (simulation scenario sensor; not on any aircraft). -->
+    <include>
+      <uri>model://ground_radar_station</uri>
+      <name>ground_radar</name>
+      <pose>200 150 0 0 0 0</pose>
+    </include>
     <spherical_coordinates>
       <surface_model>EARTH_WGS84</surface_model>
       <world_frame_orientation>ENU</world_frame_orientation>
