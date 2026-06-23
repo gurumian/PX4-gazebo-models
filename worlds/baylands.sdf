@@ -52,76 +52,13 @@
       <pose>200 150 0 0 0 0</pose>
     </include>
 
-    <!-- Intruder quad tailsitter (Gazebo actor — no PX4 / QGC).
-         Figure-8 patrol at 100 m AGL, ~100 km/h (arc-length timed waypoints).
-         Center (280, 200): within ground-radar range. Waypoints are relative to actor pose. -->
-    <actor name="intruder_quadtailsitter">
+    <!-- Intruder quad tailsitter (physics NPC — TrajectoryFollowerController, no PX4).
+         Figure-8 patrol at 100 m AGL, ~100 km/h. Center (280, 200) within radar range. -->
+    <include>
+      <uri>model://intruder_quadtailsitter</uri>
+      <name>intruder_quadtailsitter</name>
       <pose>280 200 100 0 0 0</pose>
-      <link name="base_link">
-        <pose>0 0 0.4 0 0 0</pose>
-        <visual name="body_visual">
-          <pose>-0.005 0 0 0 0 1.57</pose>
-          <geometry>
-            <mesh>
-              <scale>0.001 0.001 0.001</scale>
-              <uri>model://quadtailsitter/meshes/body.dae</uri>
-            </mesh>
-          </geometry>
-          <material>
-            <ambient>0.45 0.12 0.12 1.0</ambient>
-            <diffuse>0.55 0.15 0.15 1.0</diffuse>
-          </material>
-        </visual>
-        <collision name="body_collision">
-          <pose>0 0 -0.1 0 0 0</pose>
-          <geometry>
-            <box>
-              <size>0.35 0.55 0.25</size>
-            </box>
-          </geometry>
-        </collision>
-      </link>
-      <script>
-        <loop>true</loop>
-        <delay_start>0</delay_start>
-        <auto_start>true</auto_start>
-        <trajectory id="0" type="figure8" tension="1.0">
-          <waypoint><time>0.000</time><pose>0.00 0.00 0.00 0.000 0.000 0.785</pose></waypoint>
-          <waypoint><time>0.885</time><pose>17.56 17.22 0.00 0.000 0.000 0.756</pose></waypoint>
-          <waypoint><time>1.689</time><pose>34.44 31.82 0.00 0.000 0.000 0.653</pose></waypoint>
-          <waypoint><time>2.350</time><pose>50.00 41.57 0.00 0.000 0.000 0.431</pose></waypoint>
-          <waypoint><time>2.856</time><pose>63.64 45.00 0.00 0.000 0.000 0.000</pose></waypoint>
-          <waypoint><time>3.278</time><pose>74.83 41.57 0.00 0.000 0.000 -0.603</pose></waypoint>
-          <waypoint><time>3.739</time><pose>83.15 31.82 0.00 0.000 0.000 -1.075</pose></waypoint>
-          <waypoint><time>4.296</time><pose>88.27 17.22 0.00 0.000 0.000 -1.363</pose></waypoint>
-          <waypoint><time>4.919</time><pose>90.00 0.00 0.00 0.000 0.000 -1.571</pose></waypoint>
-          <waypoint><time>5.542</time><pose>88.27 -17.22 0.00 0.000 0.000 -1.779</pose></waypoint>
-          <waypoint><time>6.099</time><pose>83.15 -31.82 0.00 0.000 0.000 -2.067</pose></waypoint>
-          <waypoint><time>6.561</time><pose>74.83 -41.57 0.00 0.000 0.000 -2.538</pose></waypoint>
-          <waypoint><time>6.982</time><pose>63.64 -45.00 0.00 0.000 0.000 -3.142</pose></waypoint>
-          <waypoint><time>7.488</time><pose>50.00 -41.57 0.00 0.000 0.000 2.710</pose></waypoint>
-          <waypoint><time>8.149</time><pose>34.44 -31.82 0.00 0.000 0.000 2.488</pose></waypoint>
-          <waypoint><time>8.953</time><pose>17.56 -17.22 0.00 0.000 0.000 2.386</pose></waypoint>
-          <waypoint><time>9.838</time><pose>0.00 -0.00 0.00 0.000 0.000 2.356</pose></waypoint>
-          <waypoint><time>10.724</time><pose>-17.56 17.22 0.00 0.000 0.000 2.386</pose></waypoint>
-          <waypoint><time>11.527</time><pose>-34.44 31.82 0.00 0.000 0.000 2.488</pose></waypoint>
-          <waypoint><time>12.188</time><pose>-50.00 41.57 0.00 0.000 0.000 2.710</pose></waypoint>
-          <waypoint><time>12.695</time><pose>-63.64 45.00 0.00 0.000 0.000 3.142</pose></waypoint>
-          <waypoint><time>13.116</time><pose>-74.83 41.57 0.00 0.000 0.000 -2.538</pose></waypoint>
-          <waypoint><time>13.577</time><pose>-83.15 31.82 0.00 0.000 0.000 -2.067</pose></waypoint>
-          <waypoint><time>14.134</time><pose>-88.27 17.22 0.00 0.000 0.000 -1.779</pose></waypoint>
-          <waypoint><time>14.757</time><pose>-90.00 0.00 0.00 0.000 0.000 -1.571</pose></waypoint>
-          <waypoint><time>15.380</time><pose>-88.27 -17.22 0.00 0.000 0.000 -1.363</pose></waypoint>
-          <waypoint><time>15.937</time><pose>-83.15 -31.82 0.00 0.000 0.000 -1.075</pose></waypoint>
-          <waypoint><time>16.399</time><pose>-74.83 -41.57 0.00 0.000 0.000 -0.603</pose></waypoint>
-          <waypoint><time>16.820</time><pose>-63.64 -45.00 0.00 0.000 0.000 -0.000</pose></waypoint>
-          <waypoint><time>17.327</time><pose>-50.00 -41.57 0.00 0.000 0.000 0.431</pose></waypoint>
-          <waypoint><time>17.988</time><pose>-34.44 -31.82 0.00 0.000 0.000 0.653</pose></waypoint>
-          <waypoint><time>18.791</time><pose>-17.56 -17.22 0.00 0.000 0.000 0.756</pose></waypoint>
-          <waypoint><time>19.677</time><pose>-0.00 -0.00 0.00 0.000 0.000 0.785</pose></waypoint>
-        </trajectory>
-      </script>
-    </actor>
+    </include>
 
     <spherical_coordinates>
       <surface_model>EARTH_WGS84</surface_model>
