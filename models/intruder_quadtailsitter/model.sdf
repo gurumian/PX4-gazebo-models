@@ -37,12 +37,37 @@
           </box>
         </geometry>
       </collision>
+
+      <!-- Large visual + collision so gpu_lidar can see the intruder at range. -->
+      <visual name='radar_reflector_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3.0 3.0 1.5</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.8 0.1 0.1 0.35</ambient>
+          <diffuse>0.9 0.15 0.15 0.35</diffuse>
+        </material>
+        <transparency>0.65</transparency>
+      </visual>
+      <collision name='radar_reflector'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3.0 3.0 1.5</size>
+          </box>
+        </geometry>
+      </collision>
     </link>
 
     <plugin filename="libTrajectoryFollowerController.so"
             name="custom::TrajectoryFollowerController">
       <link_name>base_link</link_name>
       <loop>true</loop>
+      <publish_pose>true</publish_pose>
+      <pose_topic>/intruder/pose</pose_topic>
       <!-- Tailsitter FW cruise: nose (+Z body) horizontal; applied after waypoint yaw. -->
       <pitch_offset>1.5707</pitch_offset>
       <!-- Figure-8 patrol ~100 km/h; waypoints relative to model spawn pose. -->
