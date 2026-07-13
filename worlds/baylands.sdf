@@ -45,6 +45,15 @@
         <relative_to>park</relative_to>
       </pose>
     </include>
+
+    <!-- Intruder quad tailsitter (kinematic NPC — TrajectoryFollowerController, no PX4).
+         Figure-8 patrol at 100 m AGL, ~100 km/h. Center (280, 200). -->
+    <include>
+      <uri>model://intruder_quadtailsitter</uri>
+      <name>intruder_quadtailsitter</name>
+      <pose>280 200 100 0 0 0</pose>
+    </include>
+
     <spherical_coordinates>
       <surface_model>EARTH_WGS84</surface_model>
       <world_frame_orientation>ENU</world_frame_orientation>
