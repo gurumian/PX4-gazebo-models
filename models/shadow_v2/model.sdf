@@ -659,7 +659,8 @@
       </axis>
     </joint>
 
-    <!-- Hub/fuselage parasite drag (oml_body mesh = visual/collision/mass only). -->
+    <!-- Hub/fuselage parasite drag (oml_body mesh = visual/collision/mass only).
+         Low CD0 so level flight can reach ~300 km/h with available thrust. -->
     <plugin filename="gz-sim-advanced-lift-drag-system" name="gz::sim::systems::AdvancedLiftDrag">
       <a0>0.0</a0>
       <CL0>0.0</CL0>
@@ -667,7 +668,7 @@
       <eff>0.85</eff>
       <CLa>2.0</CLa>
       <cda>1.5</cda>
-      <CD0>0.30</CD0>
+      <CD0>0.08</CD0>
       <Cem0>0.0</Cem0>
       <Cema>-0.15</Cema>
       <CYb>-0.08</CYb>
@@ -713,7 +714,7 @@
       <eff>0.97</eff>
       <CLa>52.8</CLa>
       <cda>1.5</cda>
-      <CD0>0.15</CD0>
+      <CD0>0.05</CD0>
       <Cem0>0.075</Cem0>
       <Cema>-0.463966</Cema>
       <CYb>-0.22</CYb>
@@ -757,7 +758,7 @@
       <eff>0.97</eff>
       <CLa>52.8</CLa>
       <cda>1.5</cda>
-      <CD0>0.15</CD0>
+      <CD0>0.05</CD0>
       <Cem0>0.075</Cem0>
       <Cema>-0.463966</Cema>
       <CYb>-0.22</CYb>
@@ -801,7 +802,7 @@
       <eff>0.97</eff>
       <CLa>52.8</CLa>
       <cda>1.5</cda>
-      <CD0>0.15</CD0>
+      <CD0>0.05</CD0>
       <Cem0>0.075</Cem0>
       <Cema>-0.463966</Cema>
       <CYb>-0.22</CYb>
@@ -845,7 +846,7 @@
       <eff>0.97</eff>
       <CLa>52.8</CLa>
       <cda>1.5</cda>
-      <CD0>0.15</CD0>
+      <CD0>0.05</CD0>
       <Cem0>0.075</Cem0>
       <Cema>-0.463966</Cema>
       <CYb>-0.22</CYb>
@@ -889,7 +890,8 @@
       <turningDirection>ccw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
-      <maxRotVelocity>1400</maxRotVelocity>
+      <!-- ~3.2x thrust vs 1400: supports ~85 m/s (~300 km/h) against parasite drag. -->
+      <maxRotVelocity>2500</maxRotVelocity>
       <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.06</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
@@ -906,7 +908,8 @@
       <turningDirection>ccw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
-      <maxRotVelocity>1400</maxRotVelocity>
+      <!-- ~3.2x thrust vs 1400: supports ~85 m/s (~300 km/h) against parasite drag. -->
+      <maxRotVelocity>2500</maxRotVelocity>
       <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.06</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
@@ -923,7 +926,8 @@
       <turningDirection>cw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
-      <maxRotVelocity>1400</maxRotVelocity>
+      <!-- ~3.2x thrust vs 1400: supports ~85 m/s (~300 km/h) against parasite drag. -->
+      <maxRotVelocity>2500</maxRotVelocity>
       <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.06</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
@@ -940,7 +944,8 @@
       <turningDirection>cw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
-      <maxRotVelocity>1400</maxRotVelocity>
+      <!-- ~3.2x thrust vs 1400: supports ~85 m/s (~300 km/h) against parasite drag. -->
+      <maxRotVelocity>2500</maxRotVelocity>
       <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.06</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>

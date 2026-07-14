@@ -703,7 +703,7 @@
       <eff>0.90</eff>
       <CLa>3.0</CLa>
       <cda>1.5</cda>
-      <CD0>0.25</CD0>
+      <CD0>0.08</CD0>
       <Cem0>0.0</Cem0>
       <Cema>-0.2</Cema>
       <CYb>-0.1</CYb>
@@ -748,7 +748,7 @@
       <eff>0.97</eff>
       <CLa>5.015</CLa>
       <cda>1.5</cda>
-      <CD0>0.15</CD0>
+      <CD0>0.05</CD0>
       <Cem0>0.075</Cem0>
       <Cema>-0.463966</Cema>
       <CYb>-0.22</CYb>
@@ -793,7 +793,7 @@
       <turningDirection>ccw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
-      <maxRotVelocity>1400</maxRotVelocity>
+      <maxRotVelocity>2500</maxRotVelocity>
       <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.06</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
@@ -810,7 +810,7 @@
       <turningDirection>ccw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
-      <maxRotVelocity>1400</maxRotVelocity>
+      <maxRotVelocity>2500</maxRotVelocity>
       <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.06</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
@@ -827,7 +827,7 @@
       <turningDirection>cw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
-      <maxRotVelocity>1400</maxRotVelocity>
+      <maxRotVelocity>2500</maxRotVelocity>
       <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.06</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
@@ -844,7 +844,7 @@
       <turningDirection>cw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
-      <maxRotVelocity>1400</maxRotVelocity>
+      <maxRotVelocity>2500</maxRotVelocity>
       <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.06</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
