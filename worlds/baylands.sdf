@@ -47,7 +47,7 @@
     </include>
 
     <!-- Intruder quad tailsitter (kinematic NPC — TrajectoryFollowerController, no PX4).
-         Figure-8 patrol at 100 m AGL, ~100 km/h. Center (280, 200). -->
+         Large ellipse patrol (a=250 m, b=150 m) at 100 m AGL, ~100 km/h. Center (280, 200). -->
     <include>
       <uri>model://intruder_quadtailsitter</uri>
       <name>intruder_quadtailsitter</name>

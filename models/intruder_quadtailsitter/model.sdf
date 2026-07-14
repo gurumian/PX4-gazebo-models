@@ -73,40 +73,56 @@
       <pose_topic>/intruder/pose</pose_topic>
       <!-- Tailsitter FW cruise: nose (+Z body) horizontal; applied after waypoint yaw. -->
       <pitch_offset>1.5707</pitch_offset>
-      <!-- Figure-8 patrol ~100 km/h; waypoints relative to model spawn pose. -->
-      <waypoint><time>0.000</time><pose>0.00 0.00 0.00 0.000 0.000 0.785</pose></waypoint>
-      <waypoint><time>0.885</time><pose>17.56 17.22 0.00 0.000 0.000 0.756</pose></waypoint>
-      <waypoint><time>1.689</time><pose>34.44 31.82 0.00 0.000 0.000 0.653</pose></waypoint>
-      <waypoint><time>2.350</time><pose>50.00 41.57 0.00 0.000 0.000 0.431</pose></waypoint>
-      <waypoint><time>2.856</time><pose>63.64 45.00 0.00 0.000 0.000 0.000</pose></waypoint>
-      <waypoint><time>3.278</time><pose>74.83 41.57 0.00 0.000 0.000 -0.603</pose></waypoint>
-      <waypoint><time>3.739</time><pose>83.15 31.82 0.00 0.000 0.000 -1.075</pose></waypoint>
-      <waypoint><time>4.296</time><pose>88.27 17.22 0.00 0.000 0.000 -1.363</pose></waypoint>
-      <waypoint><time>4.919</time><pose>90.00 0.00 0.00 0.000 0.000 -1.571</pose></waypoint>
-      <waypoint><time>5.542</time><pose>88.27 -17.22 0.00 0.000 0.000 -1.779</pose></waypoint>
-      <waypoint><time>6.099</time><pose>83.15 -31.82 0.00 0.000 0.000 -2.067</pose></waypoint>
-      <waypoint><time>6.561</time><pose>74.83 -41.57 0.00 0.000 0.000 -2.538</pose></waypoint>
-      <waypoint><time>6.982</time><pose>63.64 -45.00 0.00 0.000 0.000 -3.142</pose></waypoint>
-      <waypoint><time>7.488</time><pose>50.00 -41.57 0.00 0.000 0.000 2.710</pose></waypoint>
-      <waypoint><time>8.149</time><pose>34.44 -31.82 0.00 0.000 0.000 2.488</pose></waypoint>
-      <waypoint><time>8.953</time><pose>17.56 -17.22 0.00 0.000 0.000 2.386</pose></waypoint>
-      <waypoint><time>9.838</time><pose>0.00 -0.00 0.00 0.000 0.000 2.356</pose></waypoint>
-      <waypoint><time>10.724</time><pose>-17.56 17.22 0.00 0.000 0.000 2.386</pose></waypoint>
-      <waypoint><time>11.527</time><pose>-34.44 31.82 0.00 0.000 0.000 2.488</pose></waypoint>
-      <waypoint><time>12.188</time><pose>-50.00 41.57 0.00 0.000 0.000 2.710</pose></waypoint>
-      <waypoint><time>12.695</time><pose>-63.64 45.00 0.00 0.000 0.000 3.142</pose></waypoint>
-      <waypoint><time>13.116</time><pose>-74.83 41.57 0.00 0.000 0.000 -2.538</pose></waypoint>
-      <waypoint><time>13.577</time><pose>-83.15 31.82 0.00 0.000 0.000 -2.067</pose></waypoint>
-      <waypoint><time>14.134</time><pose>-88.27 17.22 0.00 0.000 0.000 -1.779</pose></waypoint>
-      <waypoint><time>14.757</time><pose>-90.00 0.00 0.00 0.000 0.000 -1.571</pose></waypoint>
-      <waypoint><time>15.380</time><pose>-88.27 -17.22 0.00 0.000 0.000 -1.363</pose></waypoint>
-      <waypoint><time>15.937</time><pose>-83.15 -31.82 0.00 0.000 0.000 -1.075</pose></waypoint>
-      <waypoint><time>16.399</time><pose>-74.83 -41.57 0.00 0.000 0.000 -0.603</pose></waypoint>
-      <waypoint><time>16.820</time><pose>-63.64 -45.00 0.00 0.000 0.000 -0.000</pose></waypoint>
-      <waypoint><time>17.327</time><pose>-50.00 -41.57 0.00 0.000 0.000 0.431</pose></waypoint>
-      <waypoint><time>17.988</time><pose>-34.44 -31.82 0.00 0.000 0.000 0.653</pose></waypoint>
-      <waypoint><time>18.791</time><pose>-17.56 -17.22 0.00 0.000 0.000 0.756</pose></waypoint>
-      <waypoint><time>19.677</time><pose>-0.00 -0.00 0.00 0.000 0.000 0.785</pose></waypoint>
+      <!-- Large ellipse patrol a=250 m, b=150 m, ~100 km/h; relative to spawn pose. -->
+      <waypoint><time>0.000</time><pose>250.00 0.00 0.00 0.000 0.000 1.571</pose></waypoint>
+      <waypoint><time>0.709</time><pose>247.86 19.58 0.00 0.000 0.000 1.787</pose></waypoint>
+      <waypoint><time>1.439</time><pose>241.48 38.82 0.00 0.000 0.000 1.991</pose></waypoint>
+      <waypoint><time>2.207</time><pose>230.97 57.40 0.00 0.000 0.000 2.175</pose></waypoint>
+      <waypoint><time>3.027</time><pose>216.51 75.00 0.00 0.000 0.000 2.337</pose></waypoint>
+      <waypoint><time>3.906</time><pose>198.34 91.31 0.00 0.000 0.000 2.478</pose></waypoint>
+      <waypoint><time>4.847</time><pose>176.78 106.07 0.00 0.000 0.000 2.601</pose></waypoint>
+      <waypoint><time>5.847</time><pose>152.19 119.00 0.00 0.000 0.000 2.710</pose></waypoint>
+      <waypoint><time>6.902</time><pose>125.00 129.90 0.00 0.000 0.000 2.808</pose></waypoint>
+      <waypoint><time>8.003</time><pose>95.67 138.58 0.00 0.000 0.000 2.898</pose></waypoint>
+      <waypoint><time>9.140</time><pose>64.70 144.89 0.00 0.000 0.000 2.982</pose></waypoint>
+      <waypoint><time>10.303</time><pose>32.63 148.72 0.00 0.000 0.000 3.063</pose></waypoint>
+      <waypoint><time>11.479</time><pose>0.00 150.00 0.00 0.000 0.000 3.142</pose></waypoint>
+      <waypoint><time>12.655</time><pose>-32.63 148.72 0.00 0.000 0.000 -3.063</pose></waypoint>
+      <waypoint><time>13.817</time><pose>-64.70 144.89 0.00 0.000 0.000 -2.982</pose></waypoint>
+      <waypoint><time>14.955</time><pose>-95.67 138.58 0.00 0.000 0.000 -2.898</pose></waypoint>
+      <waypoint><time>16.056</time><pose>-125.00 129.90 0.00 0.000 0.000 -2.808</pose></waypoint>
+      <waypoint><time>17.111</time><pose>-152.19 119.00 0.00 0.000 0.000 -2.710</pose></waypoint>
+      <waypoint><time>18.111</time><pose>-176.78 106.07 0.00 0.000 0.000 -2.601</pose></waypoint>
+      <waypoint><time>19.051</time><pose>-198.34 91.31 0.00 0.000 0.000 -2.478</pose></waypoint>
+      <waypoint><time>19.930</time><pose>-216.51 75.00 0.00 0.000 0.000 -2.337</pose></waypoint>
+      <waypoint><time>20.751</time><pose>-230.97 57.40 0.00 0.000 0.000 -2.175</pose></waypoint>
+      <waypoint><time>21.519</time><pose>-241.48 38.82 0.00 0.000 0.000 -1.991</pose></waypoint>
+      <waypoint><time>22.249</time><pose>-247.86 19.58 0.00 0.000 0.000 -1.787</pose></waypoint>
+      <waypoint><time>22.958</time><pose>-250.00 0.00 0.00 0.000 0.000 -1.571</pose></waypoint>
+      <waypoint><time>23.667</time><pose>-247.86 -19.58 0.00 0.000 0.000 -1.355</pose></waypoint>
+      <waypoint><time>24.397</time><pose>-241.48 -38.82 0.00 0.000 0.000 -1.151</pose></waypoint>
+      <waypoint><time>25.165</time><pose>-230.97 -57.40 0.00 0.000 0.000 -0.967</pose></waypoint>
+      <waypoint><time>25.985</time><pose>-216.51 -75.00 0.00 0.000 0.000 -0.805</pose></waypoint>
+      <waypoint><time>26.864</time><pose>-198.34 -91.31 0.00 0.000 0.000 -0.664</pose></waypoint>
+      <waypoint><time>27.805</time><pose>-176.78 -106.07 0.00 0.000 0.000 -0.540</pose></waypoint>
+      <waypoint><time>28.805</time><pose>-152.19 -119.00 0.00 0.000 0.000 -0.431</pose></waypoint>
+      <waypoint><time>29.860</time><pose>-125.00 -129.90 0.00 0.000 0.000 -0.333</pose></waypoint>
+      <waypoint><time>30.961</time><pose>-95.67 -138.58 0.00 0.000 0.000 -0.244</pose></waypoint>
+      <waypoint><time>32.098</time><pose>-64.70 -144.89 0.00 0.000 0.000 -0.159</pose></waypoint>
+      <waypoint><time>33.261</time><pose>-32.63 -148.72 0.00 0.000 0.000 -0.079</pose></waypoint>
+      <waypoint><time>34.437</time><pose>-0.00 -150.00 0.00 0.000 0.000 -0.000</pose></waypoint>
+      <waypoint><time>35.612</time><pose>32.63 -148.72 0.00 0.000 0.000 0.079</pose></waypoint>
+      <waypoint><time>36.775</time><pose>64.70 -144.89 0.00 0.000 0.000 0.159</pose></waypoint>
+      <waypoint><time>37.913</time><pose>95.67 -138.58 0.00 0.000 0.000 0.244</pose></waypoint>
+      <waypoint><time>39.014</time><pose>125.00 -129.90 0.00 0.000 0.000 0.333</pose></waypoint>
+      <waypoint><time>40.069</time><pose>152.19 -119.00 0.00 0.000 0.000 0.431</pose></waypoint>
+      <waypoint><time>41.069</time><pose>176.78 -106.07 0.00 0.000 0.000 0.540</pose></waypoint>
+      <waypoint><time>42.009</time><pose>198.34 -91.31 0.00 0.000 0.000 0.664</pose></waypoint>
+      <waypoint><time>42.888</time><pose>216.51 -75.00 0.00 0.000 0.000 0.805</pose></waypoint>
+      <waypoint><time>43.708</time><pose>230.97 -57.40 0.00 0.000 0.000 0.967</pose></waypoint>
+      <waypoint><time>44.477</time><pose>241.48 -38.82 0.00 0.000 0.000 1.151</pose></waypoint>
+      <waypoint><time>45.207</time><pose>247.86 -19.58 0.00 0.000 0.000 1.355</pose></waypoint>
+      <waypoint><time>45.916</time><pose>250.00 -0.00 0.00 0.000 0.000 1.571</pose></waypoint>
     </plugin>
   </model>
 </sdf>
