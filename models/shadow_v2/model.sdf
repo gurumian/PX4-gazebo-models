@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- shadow_v2 — X-wing PETG-CF OML (45° hub yaw vs base_link).
-     Geometry: oml_body uses OML_WING.dae (hub + cruciform wing panels, visual + collision).
+     Geometry: oml_body uses shadow.glb (decimated hub + cruciform wing panels, visual + collision; mm→m scale 0.001).
      Aero: wing_ne/nw/sw/se are mesh-free frames on base_link (±45°/±135° yaw at z=0.32);
            one gz-sim AdvancedLiftDrag per frame (rocket_quadtailsitter2 coeffs, S=0.0095 m² each).
      Hub/fuselage: base_link parasite-drag proxy at z=0.32 (CL0=0; wings stay on wing_* only).
@@ -138,7 +138,7 @@
       <pose relative_to="base_link">0 0 0 0 0 0</pose>
     </joint>
 
-    <!-- PETG-CF fuselage OML (OML_WING.dae: hub + wing panels visual/collision). -->
+    <!-- PETG-CF fuselage OML (shadow.glb: hub + wing panels visual/collision; authored in mm). -->
     <!-- Wing lift/drag: wing_* links (aero plugin only; no extra mesh). -->
     <link name='oml_body'>
       <pose>0 0 0.32 0 0 0.7853981633974483</pose>
@@ -155,9 +155,12 @@
         </inertia>
       </inertial>
       <collision name='oml_body_collision'>
+        <!-- glTF Y-up → Gazebo Z-up: +90° roll (inertia/joint stay in DAE frame). -->
+        <pose>0 0 0 1.5707963267948966 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://shadow_v2/meshes/OML_WING.dae</uri>
+            <uri>model://shadow_v2/meshes/shadow.glb</uri>
+            <scale>0.001 0.001 0.001</scale>
           </mesh>
         </geometry>
         <surface>
@@ -173,9 +176,11 @@
         </surface>
       </collision>
       <visual name='oml_body_visual'>
+        <pose>0 0 0 1.5707963267948966 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://shadow_v2/meshes/OML_WING.dae</uri>
+            <uri>model://shadow_v2/meshes/shadow.glb</uri>
+            <scale>0.001 0.001 0.001</scale>
           </mesh>
         </geometry>
         <material>
@@ -189,7 +194,7 @@
       <child>oml_body</child>
     </joint>
 
-    <!-- X-wing aero frames: AdvancedLiftDrag per link (no mesh — OML_WING on oml_body). -->
+    <!-- X-wing aero frames: AdvancedLiftDrag per link (no mesh — shadow.glb on oml_body). -->
     <link name='wing_ne'>
       <pose>0 0 0.32 0 0 0.7853981633974483</pose>
       <inertial>
