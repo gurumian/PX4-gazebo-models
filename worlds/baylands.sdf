@@ -47,7 +47,8 @@
     </include>
 
     <!-- Intruder quad tailsitter (kinematic NPC — TrajectoryFollowerController, no PX4).
-         Large ellipse patrol (a=250 m, b=150 m) at 100 m AGL, ~100 km/h. Center (280, 200). -->
+         Racetrack: 14 km straight, 180° turn (R=500 m), reverse 14 km, turn; loop @ ~100 km/h.
+         Spawn (280, 200, 100); path relative to spawn along +X then +Y offset. -->
     <include>
       <uri>model://intruder_quadtailsitter</uri>
       <name>intruder_quadtailsitter</name>
