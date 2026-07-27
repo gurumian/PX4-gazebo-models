@@ -284,6 +284,12 @@
           <topic>camera/image_raw</topic>
           <pixel_format>yuyv</pixel_format>
         </plugin>
+        <!-- Absolute zoom factor (1..max_zoom) → HFOV = base_hfov / zoom -->
+        <plugin filename="libcamera_zoom_gz_plugin.so" name="v4l2_gz_plugin::CameraZoomPlugin">
+          <topic>camera/zoom</topic>
+          <max_zoom>6.0</max_zoom>
+          <base_hfov>2.0</base_hfov>
+        </plugin>
       </sensor>
     </link>
 
