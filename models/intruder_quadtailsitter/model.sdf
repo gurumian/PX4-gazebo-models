@@ -70,7 +70,7 @@
       <kinematic>true</kinematic>
       <publish_pose>true</publish_pose>
       <pose_publish_rate_hz>25</pose_publish_rate_hz>
-      <pose_topic>/intruder/pose</pose_topic>
+      <!-- pose_topic omitted: defaults to /{model_name}/pose (set via world <include><name>). -->
       <!-- Tailsitter FW cruise: nose (+Z body) horizontal; applied after waypoint yaw. -->
       <pitch_offset>1.5707</pitch_offset>
       <!-- Racetrack: 14 km straight, 180 deg turn (R=500 m), reverse 14 km, turn; loop forever @ ~100 km/h. Relative to spawn. -->

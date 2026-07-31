@@ -46,13 +46,25 @@
       </pose>
     </include>
 
-    <!-- Intruder quad tailsitter (kinematic NPC — TrajectoryFollowerController, no PX4).
-         Racetrack: 14 km straight, 180° turn (R=500 m), reverse 14 km, turn; loop @ ~100 km/h.
-         Spawn (280, 200, 100); path relative to spawn along +X then +Y offset. -->
+    <!-- Intruder NPCs (kinematic TrajectoryFollowerController, no PX4).
+         intruder_0: original 14 km racetrack
+         intruder_1: circular patrol (R=800 m)
+         intruder_2: figure-8 patrol (Gerono a=1000 m)
+         Pose topics: /intruder_0/pose, /intruder_1/pose, /intruder_2/pose. -->
     <include>
       <uri>model://intruder_quadtailsitter</uri>
-      <name>intruder_quadtailsitter</name>
+      <name>intruder_0</name>
       <pose>280 200 100 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://intruder_quadtailsitter_circle</uri>
+      <name>intruder_1</name>
+      <pose>1500 500 100 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://intruder_quadtailsitter_figure8</uri>
+      <name>intruder_2</name>
+      <pose>-500 800 100 0 0 0</pose>
     </include>
 
     <spherical_coordinates>
