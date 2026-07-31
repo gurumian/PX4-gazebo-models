@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='intruder_quadtailsitter'>
+    <static>false</static>
+    <pose>0 0 0 0 0 0</pose>
+
+    <link name='base_link'>
+      <inertial>
+        <mass>2.0</mass>
+        <inertia>
+          <ixx>0.02</ixx>
+          <iyy>0.02</iyy>
+          <izz>0.04</izz>
+        </inertia>
+      </inertial>
+
+      <visual name='body_visual'>
+        <pose>-0.005 0 0.4 0 0 1.57</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://quadtailsitter/meshes/body.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.45 0.12 0.12 1.0</ambient>
+          <diffuse>0.55 0.15 0.15 1.0</diffuse>
+        </material>
+      </visual>
+
+      <collision name='body_collision'>
+        <!-- FW: pitched 90 deg; long axis along nose (+Z body → horizontal flight). -->
+        <pose>0 0 0 0 1.5707 0</pose>
+        <geometry>
+          <box>
+            <size>0.55 0.35 0.25</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <!-- Large visual + collision so gpu_lidar can see the intruder at range. -->
+      <visual name='radar_reflector_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3.0 3.0 1.5</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.8 0.1 0.1 0.35</ambient>
+          <diffuse>0.9 0.15 0.15 0.35</diffuse>
+        </material>
+        <transparency>0.65</transparency>
+      </visual>
+      <collision name='radar_reflector'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3.0 3.0 1.5</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+
+    <plugin filename="libTrajectoryFollowerController.so"
+            name="custom::TrajectoryFollowerController">
+      <link_name>base_link</link_name>
+      <loop>true</loop>
+      <!-- Kinematic: SetWorldPoseCmd each step (no ODE wrench). Pose pub throttled for radar. -->
+      <kinematic>true</kinematic>
+      <publish_pose>true</publish_pose>
+      <pose_publish_rate_hz>25</pose_publish_rate_hz>
+      <!-- pose_topic omitted: defaults to /{model_name}/pose (set via world <include><name>). -->
+      <!-- Tailsitter FW cruise: nose (+Z body) horizontal; applied after waypoint yaw. -->
+      <pitch_offset>1.5707</pitch_offset>
+      <!-- Racetrack: 14 km straight, 180 deg turn (R=500 m), reverse 14 km, turn; loop forever @ ~100 km/h. Relative to spawn. -->
+      <waypoint><time>0.000</time><pose>0.00 0.00 0.00 0.000 0.000 0.000</pose></waypoint>
+      <waypoint><time>504.000</time><pose>14000.00 0.00 0.00 0.000 0.000 0.000</pose></waypoint>
+      <waypoint><time>507.142</time><pose>14086.82 7.60 0.00 0.000 0.000 0.175</pose></waypoint>
+      <waypoint><time>510.283</time><pose>14171.01 30.15 0.00 0.000 0.000 0.349</pose></waypoint>
+      <waypoint><time>513.425</time><pose>14250.00 66.99 0.00 0.000 0.000 0.524</pose></waypoint>
+      <waypoint><time>516.566</time><pose>14321.39 116.98 0.00 0.000 0.000 0.698</pose></waypoint>
+      <waypoint><time>519.708</time><pose>14383.02 178.61 0.00 0.000 0.000 0.873</pose></waypoint>
+      <waypoint><time>522.850</time><pose>14433.01 250.00 0.00 0.000 0.000 1.047</pose></waypoint>
+      <waypoint><time>525.991</time><pose>14469.85 328.99 0.00 0.000 0.000 1.222</pose></waypoint>
+      <waypoint><time>529.133</time><pose>14492.40 413.18 0.00 0.000 0.000 1.396</pose></waypoint>
+      <waypoint><time>532.274</time><pose>14500.00 500.00 0.00 0.000 0.000 1.571</pose></waypoint>
+      <waypoint><time>535.416</time><pose>14492.40 586.82 0.00 0.000 0.000 1.745</pose></waypoint>
+      <waypoint><time>538.558</time><pose>14469.85 671.01 0.00 0.000 0.000 1.920</pose></waypoint>
+      <waypoint><time>541.699</time><pose>14433.01 750.00 0.00 0.000 0.000 2.094</pose></waypoint>
+      <waypoint><time>544.841</time><pose>14383.02 821.39 0.00 0.000 0.000 2.269</pose></waypoint>
+      <waypoint><time>547.982</time><pose>14321.39 883.02 0.00 0.000 0.000 2.443</pose></waypoint>
+      <waypoint><time>551.124</time><pose>14250.00 933.01 0.00 0.000 0.000 2.618</pose></waypoint>
+      <waypoint><time>554.265</time><pose>14171.01 969.85 0.00 0.000 0.000 2.793</pose></waypoint>
+      <waypoint><time>557.407</time><pose>14086.82 992.40 0.00 0.000 0.000 2.967</pose></waypoint>
+      <waypoint><time>560.549</time><pose>14000.00 1000.00 0.00 0.000 0.000 3.142</pose></waypoint>
+      <waypoint><time>1064.549</time><pose>0.00 1000.00 0.00 0.000 0.000 3.142</pose></waypoint>
+      <waypoint><time>1067.690</time><pose>-86.82 992.40 0.00 0.000 0.000 -2.967</pose></waypoint>
+      <waypoint><time>1070.832</time><pose>-171.01 969.85 0.00 0.000 0.000 -2.793</pose></waypoint>
+      <waypoint><time>1073.973</time><pose>-250.00 933.01 0.00 0.000 0.000 -2.618</pose></waypoint>
+      <waypoint><time>1077.115</time><pose>-321.39 883.02 0.00 0.000 0.000 -2.443</pose></waypoint>
+      <waypoint><time>1080.257</time><pose>-383.02 821.39 0.00 0.000 0.000 -2.269</pose></waypoint>
+      <waypoint><time>1083.398</time><pose>-433.01 750.00 0.00 0.000 0.000 -2.094</pose></waypoint>
+      <waypoint><time>1086.540</time><pose>-469.85 671.01 0.00 0.000 0.000 -1.920</pose></waypoint>
+      <waypoint><time>1089.681</time><pose>-492.40 586.82 0.00 0.000 0.000 -1.745</pose></waypoint>
+      <waypoint><time>1092.823</time><pose>-500.00 500.00 0.00 0.000 0.000 -1.571</pose></waypoint>
+      <waypoint><time>1095.965</time><pose>-492.40 413.18 0.00 0.000 0.000 -1.396</pose></waypoint>
+      <waypoint><time>1099.106</time><pose>-469.85 328.99 0.00 0.000 0.000 -1.222</pose></waypoint>
+      <waypoint><time>1102.248</time><pose>-433.01 250.00 0.00 0.000 0.000 -1.047</pose></waypoint>
+      <waypoint><time>1105.389</time><pose>-383.02 178.61 0.00 0.000 0.000 -0.873</pose></waypoint>
+      <waypoint><time>1108.531</time><pose>-321.39 116.98 0.00 0.000 0.000 -0.698</pose></waypoint>
+      <waypoint><time>1111.673</time><pose>-250.00 66.99 0.00 0.000 0.000 -0.524</pose></waypoint>
+      <waypoint><time>1114.814</time><pose>-171.01 30.15 0.00 0.000 0.000 -0.349</pose></waypoint>
+      <waypoint><time>1117.956</time><pose>-86.82 7.60 0.00 0.000 0.000 -0.175</pose></waypoint>
+      <waypoint><time>1121.097</time><pose>-0.00 0.00 0.00 0.000 0.000 0.000</pose></waypoint>
+    </plugin>
+  </model>
+</sdf>

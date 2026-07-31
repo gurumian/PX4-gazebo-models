@@ -45,6 +45,28 @@
         <relative_to>park</relative_to>
       </pose>
     </include>
+
+    <!-- Intruder NPCs (kinematic TrajectoryFollowerController, no PX4).
+         intruder_0: original 14 km racetrack
+         intruder_1: circular patrol (R=800 m)
+         intruder_2: figure-8 patrol (Gerono a=1000 m)
+         Pose topics: /intruder_0/pose, /intruder_1/pose, /intruder_2/pose. -->
+    <include>
+      <uri>model://intruder_quadtailsitter</uri>
+      <name>intruder_0</name>
+      <pose>280 200 100 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://intruder_quadtailsitter_circle</uri>
+      <name>intruder_1</name>
+      <pose>1500 500 100 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://intruder_quadtailsitter_figure8</uri>
+      <name>intruder_2</name>
+      <pose>-500 800 100 0 0 0</pose>
+    </include>
+
     <spherical_coordinates>
       <surface_model>EARTH_WGS84</surface_model>
       <world_frame_orientation>ENU</world_frame_orientation>
