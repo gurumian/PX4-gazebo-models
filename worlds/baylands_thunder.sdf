@@ -4,7 +4,7 @@
        Park mesh stays at stock baylands (near origin) so scene/info comes up.
        Collapse boxes sit 10 km west of the origin catapult. Do not move the
        Fuel mesh — 50 km terrain offset blocked SceneBroadcaster.
-       Spawn: PX4_GZ_MODEL_POSE 0,-1,0.90 pitch -15° (Gazebo nose-up) yaw west. -->
+       Spawn: PX4_GZ_MODEL_POSE 0,-1,0.79 pitch -12° (Gazebo nose-up) yaw west. -->
   <world name='baylands_thunder'>
     <physics type="ode">
       <max_step_size>0.004</max_step_size>
@@ -440,24 +440,23 @@
       <pose>-10000.980 0.020 7.650 0 0 0</pose>
     </include>
 
-    <!-- Catapult: 20 m physical 15° rail (west / up). Visual-only rail let the
-         85 kg airframe pitch off the 1.2 m cradle before reaching stall speed.
-         Stroke ≈ v²/2a with 4800 N × 0.95 s → ~45 m/s over ~20 m. -->
+    <!-- Pneumatic UAV launcher (Robonic MC2555-class): ~10 m stroke, 12°
+         (envelope 8–15°), exit 1.2× stall. Cradle stays at the origin. -->
     <model name="catapult_launcher">
       <static>true</static>
-      <pose>-7.73 -1 2.62 0 -0.2618 3.14159</pose>
+      <pose>-4.18 -1 1.41 0 -0.2094 3.14159</pose>
       <link name="rail">
         <collision name="collision">
           <geometry>
             <box>
-              <size>20.0 1.2 0.20</size>
+              <size>11.0 1.2 0.20</size>
             </box>
           </geometry>
           <surface>
             <friction>
               <ode>
-                <mu>0.12</mu>
-                <mu2>0.12</mu2>
+                <mu>0.60</mu>
+                <mu2>0.60</mu2>
               </ode>
             </friction>
           </surface>
@@ -465,7 +464,7 @@
         <visual name="visual">
           <geometry>
             <box>
-              <size>20.0 1.2 0.20</size>
+              <size>11.0 1.2 0.20</size>
             </box>
           </geometry>
           <material>
@@ -475,9 +474,34 @@
         </visual>
       </link>
     </model>
+    <model name="catapult_chock">
+      <!-- Downhill stop. 12° and mu&lt;tan(12°) still holds 85 kg on the pad. -->
+      <static>true</static>
+      <pose>1.14 -1 0.48 0 -0.2094 3.14159</pose>
+      <link name="block">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.20 1.00 0.25</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.20 1.00 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.45 0.22 0.12 1</ambient>
+            <diffuse>0.55 0.28 0.16 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
     <model name="catapult_cradle">
       <static>true</static>
-      <pose>0.40 -1 0.58 0 -0.2618 3.14159</pose>
+      <pose>0.40 -1 0.48 0 -0.2094 3.14159</pose>
       <link name="pad">
         <collision name="collision">
           <geometry>
@@ -488,8 +512,8 @@
           <surface>
             <friction>
               <ode>
-                <mu>0.20</mu>
-                <mu2>0.20</mu2>
+                <mu>0.60</mu>
+                <mu2>0.60</mu2>
               </ode>
             </friction>
           </surface>
@@ -509,7 +533,7 @@
     </model>
     <model name="catapult_base">
       <static>true</static>
-      <pose>0.80 -1 0.28 0 0 0</pose>
+      <pose>0.80 -1 0.10 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
