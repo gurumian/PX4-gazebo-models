@@ -6,14 +6,14 @@
       <pose>0 0 0 0 0 0</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
-        <mass>85</mass>
+        <mass>1</mass>
         <inertia>
-          <ixx>45</ixx>
+          <ixx>0.197563</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>28</iyy>
+          <iyy>0.1458929</iyy>
           <iyz>0</iyz>
-          <izz>58</izz>
+          <izz>0.1477</izz>
         </inertia>
       </inertial>
       <collision name='base_link_collision'>
@@ -153,9 +153,9 @@
       </sensor>
     </link>
     <link name='rotor_puller'>
-      <!-- Pusher: tail of scaled mauv.glb (x≈−0.51). Joint axis stays +X so
-           thrust is still forward. -->
-      <pose>-0.55 0 0.05 0 1.57 0</pose>
+      <!-- Pusher: just aft of scaled mauv.glb (tail x≈−0.69). Joint axis stays
+           +X so thrust is still forward. -->
+      <pose>-0.72 0 0 0 1.57 0</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
         <mass>0.005</mass>
@@ -539,15 +539,14 @@
       <link_name>base_link</link_name>
     </plugin>
     <plugin filename="gz-sim-advanced-lift-drag-system" name="gz::sim::systems::AdvancedLiftDrag">
-      <!-- NACA 23012 lumped wing: S=1.25 m², MAC=0.524 m, AR=5, cruise AOA≈3°. -->
-      <a0>0.052</a0>
-      <CL0>0.10</CL0>
-      <AR>5.0</AR>
-      <eff>0.95</eff>
-      <CLa>5.7</CLa>
-      <CD0>0.022</CD0>
-      <Cem0>0.04</Cem0>
-      <Cema>-0.55</Cema>
+      <a0>0.0</a0>
+      <CL0>0.15188</CL0>
+      <AR>6.5</AR>
+      <eff>0.97</eff>
+      <CLa>5.015</CLa>
+      <CD0>0.029</CD0>
+      <Cem0>0.075</Cem0>
+      <Cema>-0.463966</Cema>
       <CYb>-0.258244</CYb>
       <Cellb>-0.039250</Cellb>
       <Cenb>0.100826</Cenb>
@@ -569,13 +568,13 @@
       <Cellr>0.078165</Cellr>
       <Cemr>0.0</Cemr>
       <Cenr>-0.089947</Cenr>
-      <alpha_stall>0.30</alpha_stall>
+      <alpha_stall>0.3391428111</alpha_stall>
       <CLa_stall>-3.85</CLa_stall>
       <CDa_stall>-0.9233984055</CDa_stall>
       <Cema_stall>0</Cema_stall>
-      <cp>-0.13 0.0 0.0</cp>
-      <area>1.25</area>
-      <mac>0.524</mac>
+      <cp>-0.12 0.0 0.0</cp>
+      <area>0.34</area>
+      <mac>0.22</mac>
       <air_density>1.2041</air_density>
       <forward>1 0 0</forward>
       <upward>0 0 1</upward>
@@ -633,9 +632,8 @@
       <turningDirection>cw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
-      <maxRotVelocity>4500</maxRotVelocity>
-      <!-- T_max ≈ motorConstant * ω^2 ≈ 2500 N (T/W ≈ 3) for 85 kg climb-out. -->
-      <motorConstant>1.23e-4</motorConstant>
+      <maxRotVelocity>3500</maxRotVelocity>
+      <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.01</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
       <motorNumber>0</motorNumber>
