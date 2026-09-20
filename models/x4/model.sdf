@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sdf version='1.9'>
-  <!-- Placeholder visual: reuses x500_base until an x4 cinewhoop mesh exists. -->
   <model name='x4'>
     <include merge='true'>
-      <uri>model://x500_base</uri>
+      <uri>model://x4_base</uri>
     </include>
     <plugin filename="gz-sim-multicopter-motor-model-system"
       name="gz::sim::systems::MulticopterMotorModel">

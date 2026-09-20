@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <!-- QAV-PRO Whoop 5": rectangular (not square-X). Motor plate 340 x 285 mm (Y x X). -->
+  <!-- Ducts/props from model://kopis_x8_base, single deck. Body FLU: +X fwd, +Y left. -->
+  <!-- Rotors at FLU (±0.073, ±0.100); CA FRD PY = -y. Order: 0=FR 1=RL 2=FL 3=RR. -->
+  <model name='x4_base'>
+    <pose>0 0 .24 0 0 0</pose>
+    <self_collide>false</self_collide>
+    <static>false</static>
+    <link name="base_link">
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>0.012</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.007</iyy>
+          <iyz>0</iyz>
+          <izz>0.016</izz>
+        </inertia>
+      </inertial>
+      <gravity>true</gravity>
+      <velocity_decay/>
+      <collision name="base_link_collision">
+        <pose>0 0 .007 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.16 0.24 0.04</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.001</min_depth>
+              <max_vel>0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <!-- Center bay: wider in Y (camera / Z-1 Mini). Inner opening ~0.12 x 0.18. -->
+      <visual name="bay_front_rail">
+        <pose>0.065 0 0.025 0 0 0</pose>
+        <geometry><box><size>0.012 0.20 0.008</size></box></geometry>
+        <material><diffuse>0.12 0.12 0.13</diffuse><specular>0.2 0.2 0.2</specular></material>
+      </visual>
+      <visual name="bay_rear_rail">
+        <pose>-0.065 0 0.025 0 0 0</pose>
+        <geometry><box><size>0.012 0.20 0.008</size></box></geometry>
+        <material><diffuse>0.12 0.12 0.13</diffuse><specular>0.2 0.2 0.2</specular></material>
+      </visual>
+      <visual name="bay_left_rail">
+        <pose>0 0.094 0.025 0 0 0</pose>
+        <geometry><box><size>0.14 0.012 0.008</size></box></geometry>
+        <material><diffuse>0.12 0.12 0.13</diffuse><specular>0.2 0.2 0.2</specular></material>
+      </visual>
+      <visual name="bay_right_rail">
+        <pose>0 -0.094 0.025 0 0 0</pose>
+        <geometry><box><size>0.14 0.012 0.008</size></box></geometry>
+        <material><diffuse>0.12 0.12 0.13</diffuse><specular>0.2 0.2 0.2</specular></material>
+      </visual>
+      <visual name="fc_stack">
+        <pose>-0.02 0 0.04 0 0 0</pose>
+        <geometry><box><size>0.035 0.035 0.02</size></box></geometry>
+        <material><diffuse>0.05 0.35 0.15</diffuse><specular>0.1 0.2 0.1</specular></material>
+      </visual>
+      <visual name="nose_marker">
+        <pose>0.072 0 0.032 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.016 0.028 0.006</size>
+          </box>
+        </geometry>
+        <material>
+          <diffuse>1 0.2 0.1</diffuse>
+          <specular>0.3 0.1 0.1</specular>
+          <emissive>0.4 0 0</emissive>
+        </material>
+      </visual>
+      <!-- 5" ducts on a 340x285 mm rectangle (Y wider). Scale 0.90 vs Kopis 156 mm OD. -->
+      <visual name="duct_fl_visual">
+        <pose>0.073 0.100 0.0788 3.14159 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.00090 0.00090 0.00090</scale>
+            <uri>model://kopis_x8_base/meshes/KopisX8_Cinelifter_5in_Duct.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.45 0.45 0.5</diffuse>
+          <specular>0.2 0.2 0.2</specular>
+        </material>
+      </visual>
+      <collision name="duct_fl_collision">
+        <pose>0.073 0.100 0.0788 3.14159 0 0</pose>
+        <geometry><box><size>0.140 0.140 0.034</size></box></geometry>
+        <surface><contact><ode><min_depth>0.001</min_depth><max_vel>0</max_vel></ode></contact><friction><ode/></friction></surface>
+      </collision>
+      <visual name="duct_fr_visual">
+        <pose>0.073 -0.100 0.0788 3.14159 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.00090 0.00090 0.00090</scale>
+            <uri>model://kopis_x8_base/meshes/KopisX8_Cinelifter_5in_Duct.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.45 0.45 0.5</diffuse>
+          <specular>0.2 0.2 0.2</specular>
+        </material>
+      </visual>
+      <collision name="duct_fr_collision">
+        <pose>0.073 -0.100 0.0788 3.14159 0 0</pose>
+        <geometry><box><size>0.140 0.140 0.034</size></box></geometry>
+        <surface><contact><ode><min_depth>0.001</min_depth><max_vel>0</max_vel></ode></contact><friction><ode/></friction></surface>
+      </collision>
+      <visual name="duct_rl_visual">
+        <pose>-0.073 0.100 0.0788 3.14159 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.00090 0.00090 0.00090</scale>
+            <uri>model://kopis_x8_base/meshes/KopisX8_Cinelifter_5in_Duct.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.45 0.45 0.5</diffuse>
+          <specular>0.2 0.2 0.2</specular>
+        </material>
+      </visual>
+      <collision name="duct_rl_collision">
+        <pose>-0.073 0.100 0.0788 3.14159 0 0</pose>
+        <geometry><box><size>0.140 0.140 0.034</size></box></geometry>
+        <surface><contact><ode><min_depth>0.001</min_depth><max_vel>0</max_vel></ode></contact><friction><ode/></friction></surface>
+      </collision>
+      <visual name="duct_rr_visual">
+        <pose>-0.073 -0.100 0.0788 3.14159 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.00090 0.00090 0.00090</scale>
+            <uri>model://kopis_x8_base/meshes/KopisX8_Cinelifter_5in_Duct.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.45 0.45 0.5</diffuse>
+          <specular>0.2 0.2 0.2</specular>
+        </material>
+      </visual>
+      <collision name="duct_rr_collision">
+        <pose>-0.073 -0.100 0.0788 3.14159 0 0</pose>
+        <geometry><box><size>0.140 0.140 0.034</size></box></geometry>
+        <surface><contact><ode><min_depth>0.001</min_depth><max_vel>0</max_vel></ode></contact><friction><ode/></friction></surface>
+      </collision>
+      <sensor name="air_pressure_sensor" type="air_pressure">
+        <always_on>1</always_on>
+        <update_rate>50</update_rate>
+        <air_pressure>
+          <pressure>
+            <noise type="gaussian">
+              <mean>0</mean>
+              <stddev>3</stddev>
+            </noise>
+          </pressure>
+        </air_pressure>
+      </sensor>
+      <sensor name="magnetometer_sensor" type="magnetometer">
+        <always_on>1</always_on>
+        <update_rate>100</update_rate>
+        <magnetometer>
+          <x>
+            <noise type="gaussian">
+              <stddev>0.0001</stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <stddev>0.0001</stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <stddev>0.0001</stddev>
+            </noise>
+          </z>
+        </magnetometer>
+      </sensor>
+      <sensor name="imu_sensor" type="imu">
+        <always_on>1</always_on>
+        <update_rate>250</update_rate>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>0.0008726646</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>0.0008726646</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>0.0008726646</stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>0.00637</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>0.00637</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>0.00686</stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+      <sensor name="navsat_sensor" type="navsat">
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+      </sensor>
+    </link>
+    <!-- Quad X, one rotor per arm. Names/order match x500: 0=FR 1=RL 2=FL 3=RR (FLU poses). -->
+    <link name="rotor_0">
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <pose>0.073 -0.100 0.0788 0 0 0</pose>
+      <inertial>
+        <mass>0.016076923076923075</mass>
+        <inertia>
+          <ixx>3.8464910483993325e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2.6115851691700804e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.649858234714004e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name="rotor_0_visual">
+        <pose>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://kopis_x8_base/meshes/Propeller_5_inch.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <collision name="rotor_0_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.127 0.02 0.001</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact><ode><min_depth>0.001</min_depth><max_vel>0</max_vel></ode></contact>
+          <friction><ode/></friction>
+        </surface>
+      </collision>
+    </link>
+    <joint name="rotor_0_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>rotor_0</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit><lower>-1e+16</lower><upper>1e+16</upper></limit>
+        <dynamics><spring_reference>0</spring_reference><spring_stiffness>0</spring_stiffness></dynamics>
+      </axis>
+    </joint>
+    <link name="rotor_1">
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <pose>-0.073 0.100 0.0788 0 0 0</pose>
+      <inertial>
+        <mass>0.016076923076923075</mass>
+        <inertia>
+          <ixx>3.8464910483993325e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2.6115851691700804e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.649858234714004e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name="rotor_1_visual">
+        <pose>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://kopis_x8_base/meshes/Propeller_5_inch.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script><name>Gazebo/DarkGrey</name><uri>file://media/materials/scripts/gazebo.material</uri></script>
+        </material>
+      </visual>
+      <collision name="rotor_1_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry><box><size>0.127 0.02 0.001</size></box></geometry>
+        <surface><contact><ode><min_depth>0.001</min_depth><max_vel>0</max_vel></ode></contact><friction><ode/></friction></surface>
+      </collision>
+    </link>
+    <joint name="rotor_1_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>rotor_1</child>
+      <axis><xyz>0 0 1</xyz><limit><lower>-1e+16</lower><upper>1e+16</upper></limit><dynamics><spring_reference>0</spring_reference><spring_stiffness>0</spring_stiffness></dynamics></axis>
+    </joint>
+    <link name="rotor_2">
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <pose>0.073 0.100 0.0788 0 0 0</pose>
+      <inertial>
+        <mass>0.016076923076923075</mass>
+        <inertia>
+          <ixx>3.8464910483993325e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2.6115851691700804e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.649858234714004e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name="rotor_2_visual">
+        <pose>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://kopis_x8_base/meshes/Propeller_5_inch.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script><name>Gazebo/DarkGrey</name><uri>file://media/materials/scripts/gazebo.material</uri></script>
+        </material>
+      </visual>
+      <collision name="rotor_2_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry><box><size>0.127 0.02 0.001</size></box></geometry>
+        <surface><contact><ode><min_depth>0.001</min_depth><max_vel>0</max_vel></ode></contact><friction><ode/></friction></surface>
+      </collision>
+    </link>
+    <joint name="rotor_2_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>rotor_2</child>
+      <axis><xyz>0 0 1</xyz><limit><lower>-1e+16</lower><upper>1e+16</upper></limit><dynamics><spring_reference>0</spring_reference><spring_stiffness>0</spring_stiffness></dynamics></axis>
+    </joint>
+    <link name="rotor_3">
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay/>
+      <pose>-0.073 -0.100 0.0788 0 0 0</pose>
+      <inertial>
+        <mass>0.016076923076923075</mass>
+        <inertia>
+          <ixx>3.8464910483993325e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2.6115851691700804e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.649858234714004e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name="rotor_3_visual">
+        <pose>0 0 0 -1.5708 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://kopis_x8_base/meshes/Propeller_5_inch.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script><name>Gazebo/DarkGrey</name><uri>file://media/materials/scripts/gazebo.material</uri></script>
+        </material>
+      </visual>
+      <collision name="rotor_3_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry><box><size>0.127 0.02 0.001</size></box></geometry>
+        <surface><contact><ode><min_depth>0.001</min_depth><max_vel>0</max_vel></ode></contact><friction><ode/></friction></surface>
+      </collision>
+    </link>
+    <joint name="rotor_3_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>rotor_3</child>
+      <axis><xyz>0 0 1</xyz><limit><lower>-1e+16</lower><upper>1e+16</upper></limit><dynamics><spring_reference>0</spring_reference><spring_stiffness>0</spring_stiffness></dynamics></axis>
+    </joint>
+  </model>
+</sdf>
