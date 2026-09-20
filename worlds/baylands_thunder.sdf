@@ -1,0 +1,567 @@
+<sdf version='1.9'>
+  <!-- Thunder collapse world (stock baylands.sdf is unchanged).
+       No intruder NPCs — those belong to the intercept sim on baylands.
+       Park mesh stays at stock baylands (near origin) so scene/info comes up.
+       Collapse boxes sit 10 km west of the origin catapult. Do not move the
+       Fuel mesh — 50 km terrain offset blocked SceneBroadcaster.
+       Spawn: PX4_GZ_MODEL_POSE 0,-1,0.79 pitch -12° (Gazebo nose-up) yaw west. -->
+  <world name='baylands_thunder'>
+    <physics type="ode">
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+    </physics>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <scene>
+      <ambient>0.8 0.5 1</ambient>
+      <grid>false</grid>
+      <sky>
+        <clouds>true</clouds>
+      </sky>
+      <shadows>1</shadows>
+    </scene>
+    <light name='sunUTC' type='directional'>
+      <pose>0 0 500 0 -0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <intensity>1</intensity>
+      <direction>0.001 0.625 -0.78</direction>
+      <diffuse>0.904 0.904 0.904 1</diffuse>
+      <specular>0.271 0.271 0.271 1</specular>
+      <attenuation>
+        <range>2000</range>
+        <linear>0</linear>
+        <constant>1</constant>
+        <quadratic>0</quadratic>
+      </attenuation>
+    </light>
+    <include>
+      <uri>
+        https://fuel.gazebosim.org/1.0/OpenRobotics/models/baylands
+      </uri>
+      <name>park</name>
+      <pose>205.000 155 -1 0 0 0</pose>
+    </include>
+    <include>
+      <uri>
+        https://fuel.gazebosim.org/1.0/OpenRobotics/models/Coast Water
+      </uri>
+      <pose>0 0 -2 0 0 0
+        <relative_to>park</relative_to>
+      </pose>
+    </include>
+
+    <!-- Floor under the 1 m collapse stack (10 km west of spawn). -->
+    <model name="box_stack_pad">
+      <static>true</static>
+      <pose>-10002.000 -1 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>5 5 0.1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>5 5 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.35 0.38 1</ambient>
+            <diffuse>0.45 0.45 0.48 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- 3x3 x 8 dynamic 1 m cubes. -->
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_0_0</name>
+      <pose>-10003.020 -2.020 0.510 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_0_0</name>
+      <pose>-10002.000 -2.020 0.510 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_0_0</name>
+      <pose>-10000.980 -2.020 0.510 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_1_0</name>
+      <pose>-10003.020 -1.000 0.510 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_1_0</name>
+      <pose>-10002.000 -1.000 0.510 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_1_0</name>
+      <pose>-10000.980 -1.000 0.510 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_2_0</name>
+      <pose>-10003.020 0.020 0.510 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_2_0</name>
+      <pose>-10002.000 0.020 0.510 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_2_0</name>
+      <pose>-10000.980 0.020 0.510 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_0_1</name>
+      <pose>-10003.020 -2.020 1.530 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_0_1</name>
+      <pose>-10002.000 -2.020 1.530 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_0_1</name>
+      <pose>-10000.980 -2.020 1.530 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_1_1</name>
+      <pose>-10003.020 -1.000 1.530 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_1_1</name>
+      <pose>-10002.000 -1.000 1.530 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_1_1</name>
+      <pose>-10000.980 -1.000 1.530 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_2_1</name>
+      <pose>-10003.020 0.020 1.530 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_2_1</name>
+      <pose>-10002.000 0.020 1.530 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_2_1</name>
+      <pose>-10000.980 0.020 1.530 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_0_2</name>
+      <pose>-10003.020 -2.020 2.550 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_0_2</name>
+      <pose>-10002.000 -2.020 2.550 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_0_2</name>
+      <pose>-10000.980 -2.020 2.550 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_1_2</name>
+      <pose>-10003.020 -1.000 2.550 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_1_2</name>
+      <pose>-10002.000 -1.000 2.550 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_1_2</name>
+      <pose>-10000.980 -1.000 2.550 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_2_2</name>
+      <pose>-10003.020 0.020 2.550 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_2_2</name>
+      <pose>-10002.000 0.020 2.550 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_2_2</name>
+      <pose>-10000.980 0.020 2.550 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_0_3</name>
+      <pose>-10003.020 -2.020 3.570 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_0_3</name>
+      <pose>-10002.000 -2.020 3.570 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_0_3</name>
+      <pose>-10000.980 -2.020 3.570 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_1_3</name>
+      <pose>-10003.020 -1.000 3.570 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_1_3</name>
+      <pose>-10002.000 -1.000 3.570 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_1_3</name>
+      <pose>-10000.980 -1.000 3.570 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_2_3</name>
+      <pose>-10003.020 0.020 3.570 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_2_3</name>
+      <pose>-10002.000 0.020 3.570 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_2_3</name>
+      <pose>-10000.980 0.020 3.570 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_0_4</name>
+      <pose>-10003.020 -2.020 4.590 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_0_4</name>
+      <pose>-10002.000 -2.020 4.590 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_0_4</name>
+      <pose>-10000.980 -2.020 4.590 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_1_4</name>
+      <pose>-10003.020 -1.000 4.590 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_1_4</name>
+      <pose>-10002.000 -1.000 4.590 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_1_4</name>
+      <pose>-10000.980 -1.000 4.590 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_2_4</name>
+      <pose>-10003.020 0.020 4.590 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_2_4</name>
+      <pose>-10002.000 0.020 4.590 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_2_4</name>
+      <pose>-10000.980 0.020 4.590 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_0_5</name>
+      <pose>-10003.020 -2.020 5.610 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_0_5</name>
+      <pose>-10002.000 -2.020 5.610 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_0_5</name>
+      <pose>-10000.980 -2.020 5.610 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_1_5</name>
+      <pose>-10003.020 -1.000 5.610 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_1_5</name>
+      <pose>-10002.000 -1.000 5.610 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_1_5</name>
+      <pose>-10000.980 -1.000 5.610 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_2_5</name>
+      <pose>-10003.020 0.020 5.610 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_2_5</name>
+      <pose>-10002.000 0.020 5.610 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_2_5</name>
+      <pose>-10000.980 0.020 5.610 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_0_6</name>
+      <pose>-10003.020 -2.020 6.630 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_0_6</name>
+      <pose>-10002.000 -2.020 6.630 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_0_6</name>
+      <pose>-10000.980 -2.020 6.630 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_1_6</name>
+      <pose>-10003.020 -1.000 6.630 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_1_6</name>
+      <pose>-10002.000 -1.000 6.630 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_1_6</name>
+      <pose>-10000.980 -1.000 6.630 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_2_6</name>
+      <pose>-10003.020 0.020 6.630 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_2_6</name>
+      <pose>-10002.000 0.020 6.630 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_2_6</name>
+      <pose>-10000.980 0.020 6.630 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_0_7</name>
+      <pose>-10003.020 -2.020 7.650 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_0_7</name>
+      <pose>-10002.000 -2.020 7.650 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_0_7</name>
+      <pose>-10000.980 -2.020 7.650 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_1_7</name>
+      <pose>-10003.020 -1.000 7.650 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_1_7</name>
+      <pose>-10002.000 -1.000 7.650 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_1_7</name>
+      <pose>-10000.980 -1.000 7.650 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_0_2_7</name>
+      <pose>-10003.020 0.020 7.650 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_1_2_7</name>
+      <pose>-10002.000 0.020 7.650 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://collapse_box</uri>
+      <name>box_2_2_7</name>
+      <pose>-10000.980 0.020 7.650 0 0 0</pose>
+    </include>
+
+    <!-- Pneumatic UAV launcher (Robonic MC2555-class): ~10 m stroke, 12°
+         (envelope 8–15°), exit 1.2× stall. Cradle stays at the origin. -->
+    <model name="catapult_launcher">
+      <static>true</static>
+      <pose>-4.18 -1 1.41 0 -0.2094 3.14159</pose>
+      <link name="rail">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>11.0 1.2 0.20</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.60</mu>
+                <mu2>0.60</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>11.0 1.2 0.20</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.28 0.32 1</ambient>
+            <diffuse>0.35 0.38 0.42 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="catapult_chock">
+      <!-- Downhill stop. 12° and mu&lt;tan(12°) still holds 85 kg on the pad. -->
+      <static>true</static>
+      <pose>1.14 -1 0.48 0 -0.2094 3.14159</pose>
+      <link name="block">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.20 1.00 0.25</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.20 1.00 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.45 0.22 0.12 1</ambient>
+            <diffuse>0.55 0.28 0.16 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="catapult_cradle">
+      <static>true</static>
+      <pose>0.40 -1 0.48 0 -0.2094 3.14159</pose>
+      <link name="pad">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.60 0.90 0.12</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.60</mu>
+                <mu2>0.60</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.60 0.90 0.12</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.22 0.24 0.28 1</ambient>
+            <diffuse>0.32 0.34 0.38 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="catapult_base">
+      <static>true</static>
+      <pose>0.80 -1 0.10 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.60 1.00 0.56</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.60 1.00 0.56</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.40 0.32 0.18 1</ambient>
+            <diffuse>0.52 0.40 0.22 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <world_frame_orientation>ENU</world_frame_orientation>
+      <latitude_deg>37.412173071650805</latitude_deg>
+      <longitude_deg>-121.998878727967</longitude_deg>
+      <elevation>38</elevation>
+    </spherical_coordinates>
+  </world>
+</sdf>

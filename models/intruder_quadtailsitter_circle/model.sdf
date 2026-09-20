@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='intruder_quadtailsitter_circle'>
+    <static>false</static>
+    <pose>0 0 0 0 0 0</pose>
+
+    <link name='base_link'>
+      <inertial>
+        <mass>2.0</mass>
+        <inertia>
+          <ixx>0.02</ixx>
+          <iyy>0.02</iyy>
+          <izz>0.04</izz>
+        </inertia>
+      </inertial>
+
+      <visual name='body_visual'>
+        <pose>-0.005 0 0.4 0 0 1.57</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://quadtailsitter/meshes/body.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.45 0.12 0.12 1.0</ambient>
+          <diffuse>0.55 0.15 0.15 1.0</diffuse>
+        </material>
+      </visual>
+
+      <collision name='body_collision'>
+        <!-- FW: pitched 90 deg; long axis along nose (+Z body → horizontal flight). -->
+        <pose>0 0 0 0 1.5707 0</pose>
+        <geometry>
+          <box>
+            <size>0.55 0.35 0.25</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <!-- Large visual + collision so gpu_lidar can see the intruder at range. -->
+      <visual name='radar_reflector_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3.0 3.0 1.5</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.8 0.1 0.1 0.35</ambient>
+          <diffuse>0.9 0.15 0.15 0.35</diffuse>
+        </material>
+        <transparency>0.65</transparency>
+      </visual>
+      <collision name='radar_reflector'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>3.0 3.0 1.5</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+
+    <plugin filename="libTrajectoryFollowerController.so"
+            name="custom::TrajectoryFollowerController">
+      <link_name>base_link</link_name>
+      <loop>true</loop>
+      <kinematic>true</kinematic>
+      <publish_pose>true</publish_pose>
+      <pose_publish_rate_hz>25</pose_publish_rate_hz>
+      <!-- pose_topic omitted: defaults to /{model_name}/pose -->
+      <pitch_offset>1.5707</pitch_offset>
+      <!-- Circle: R=800 m, start at spawn, center +(0,R), ~100 km/h. -->
+      <waypoint><time>0.000</time><pose>0.00 0.00 0.00 0.000 0.000 0.000</pose></waypoint>
+      <waypoint><time>2.513</time><pose>69.72 3.04 0.00 0.000 0.000 0.087</pose></waypoint>
+      <waypoint><time>5.027</time><pose>138.92 12.15 0.00 0.000 0.000 0.175</pose></waypoint>
+      <waypoint><time>7.540</time><pose>207.06 27.26 0.00 0.000 0.000 0.262</pose></waypoint>
+      <waypoint><time>10.053</time><pose>273.62 48.25 0.00 0.000 0.000 0.349</pose></waypoint>
+      <waypoint><time>12.566</time><pose>338.09 74.95 0.00 0.000 0.000 0.436</pose></waypoint>
+      <waypoint><time>15.080</time><pose>400.00 107.18 0.00 0.000 0.000 0.524</pose></waypoint>
+      <waypoint><time>17.593</time><pose>458.86 144.68 0.00 0.000 0.000 0.611</pose></waypoint>
+      <waypoint><time>20.106</time><pose>514.23 187.16 0.00 0.000 0.000 0.698</pose></waypoint>
+      <waypoint><time>22.619</time><pose>565.69 234.31 0.00 0.000 0.000 0.785</pose></waypoint>
+      <waypoint><time>25.133</time><pose>612.84 285.77 0.00 0.000 0.000 0.873</pose></waypoint>
+      <waypoint><time>27.646</time><pose>655.32 341.14 0.00 0.000 0.000 0.960</pose></waypoint>
+      <waypoint><time>30.159</time><pose>692.82 400.00 0.00 0.000 0.000 1.047</pose></waypoint>
+      <waypoint><time>32.673</time><pose>725.05 461.91 0.00 0.000 0.000 1.134</pose></waypoint>
+      <waypoint><time>35.186</time><pose>751.75 526.38 0.00 0.000 0.000 1.222</pose></waypoint>
+      <waypoint><time>37.699</time><pose>772.74 592.94 0.00 0.000 0.000 1.309</pose></waypoint>
+      <waypoint><time>40.212</time><pose>787.85 661.08 0.00 0.000 0.000 1.396</pose></waypoint>
+      <waypoint><time>42.726</time><pose>796.96 730.28 0.00 0.000 0.000 1.484</pose></waypoint>
+      <waypoint><time>45.239</time><pose>800.00 800.00 0.00 0.000 0.000 1.571</pose></waypoint>
+      <waypoint><time>47.752</time><pose>796.96 869.72 0.00 0.000 0.000 1.658</pose></waypoint>
+      <waypoint><time>50.265</time><pose>787.85 938.92 0.00 0.000 0.000 1.745</pose></waypoint>
+      <waypoint><time>52.779</time><pose>772.74 1007.06 0.00 0.000 0.000 1.833</pose></waypoint>
+      <waypoint><time>55.292</time><pose>751.75 1073.62 0.00 0.000 0.000 1.920</pose></waypoint>
+      <waypoint><time>57.805</time><pose>725.05 1138.09 0.00 0.000 0.000 2.007</pose></waypoint>
+      <waypoint><time>60.319</time><pose>692.82 1200.00 0.00 0.000 0.000 2.094</pose></waypoint>
+      <waypoint><time>62.832</time><pose>655.32 1258.86 0.00 0.000 0.000 2.182</pose></waypoint>
+      <waypoint><time>65.345</time><pose>612.84 1314.23 0.00 0.000 0.000 2.269</pose></waypoint>
+      <waypoint><time>67.858</time><pose>565.69 1365.69 0.00 0.000 0.000 2.356</pose></waypoint>
+      <waypoint><time>70.372</time><pose>514.23 1412.84 0.00 0.000 0.000 2.443</pose></waypoint>
+      <waypoint><time>72.885</time><pose>458.86 1455.32 0.00 0.000 0.000 2.531</pose></waypoint>
+      <waypoint><time>75.398</time><pose>400.00 1492.82 0.00 0.000 0.000 2.618</pose></waypoint>
+      <waypoint><time>77.911</time><pose>338.09 1525.05 0.00 0.000 0.000 2.705</pose></waypoint>
+      <waypoint><time>80.425</time><pose>273.62 1551.75 0.00 0.000 0.000 2.793</pose></waypoint>
+      <waypoint><time>82.938</time><pose>207.06 1572.74 0.00 0.000 0.000 2.880</pose></waypoint>
+      <waypoint><time>85.451</time><pose>138.92 1587.85 0.00 0.000 0.000 2.967</pose></waypoint>
+      <waypoint><time>87.965</time><pose>69.72 1596.96 0.00 0.000 0.000 3.054</pose></waypoint>
+      <waypoint><time>90.478</time><pose>0.00 1600.00 0.00 0.000 0.000 3.142</pose></waypoint>
+      <waypoint><time>92.991</time><pose>-69.72 1596.96 0.00 0.000 0.000 -3.054</pose></waypoint>
+      <waypoint><time>95.504</time><pose>-138.92 1587.85 0.00 0.000 0.000 -2.967</pose></waypoint>
+      <waypoint><time>98.018</time><pose>-207.06 1572.74 0.00 0.000 0.000 -2.880</pose></waypoint>
+      <waypoint><time>100.531</time><pose>-273.62 1551.75 0.00 0.000 0.000 -2.793</pose></waypoint>
+      <waypoint><time>103.044</time><pose>-338.09 1525.05 0.00 0.000 0.000 -2.705</pose></waypoint>
+      <waypoint><time>105.558</time><pose>-400.00 1492.82 0.00 0.000 0.000 -2.618</pose></waypoint>
+      <waypoint><time>108.071</time><pose>-458.86 1455.32 0.00 0.000 0.000 -2.531</pose></waypoint>
+      <waypoint><time>110.584</time><pose>-514.23 1412.84 0.00 0.000 0.000 -2.443</pose></waypoint>
+      <waypoint><time>113.097</time><pose>-565.69 1365.69 0.00 0.000 0.000 -2.356</pose></waypoint>
+      <waypoint><time>115.611</time><pose>-612.84 1314.23 0.00 0.000 0.000 -2.269</pose></waypoint>
+      <waypoint><time>118.124</time><pose>-655.32 1258.86 0.00 0.000 0.000 -2.182</pose></waypoint>
+      <waypoint><time>120.637</time><pose>-692.82 1200.00 0.00 0.000 0.000 -2.094</pose></waypoint>
+      <waypoint><time>123.150</time><pose>-725.05 1138.09 0.00 0.000 0.000 -2.007</pose></waypoint>
+      <waypoint><time>125.664</time><pose>-751.75 1073.62 0.00 0.000 0.000 -1.920</pose></waypoint>
+      <waypoint><time>128.177</time><pose>-772.74 1007.06 0.00 0.000 0.000 -1.833</pose></waypoint>
+      <waypoint><time>130.690</time><pose>-787.85 938.92 0.00 0.000 0.000 -1.745</pose></waypoint>
+      <waypoint><time>133.204</time><pose>-796.96 869.72 0.00 0.000 0.000 -1.658</pose></waypoint>
+      <waypoint><time>135.717</time><pose>-800.00 800.00 0.00 0.000 0.000 -1.571</pose></waypoint>
+      <waypoint><time>138.230</time><pose>-796.96 730.28 0.00 0.000 0.000 -1.484</pose></waypoint>
+      <waypoint><time>140.743</time><pose>-787.85 661.08 0.00 0.000 0.000 -1.396</pose></waypoint>
+      <waypoint><time>143.257</time><pose>-772.74 592.94 0.00 0.000 0.000 -1.309</pose></waypoint>
+      <waypoint><time>145.770</time><pose>-751.75 526.38 0.00 0.000 0.000 -1.222</pose></waypoint>
+      <waypoint><time>148.283</time><pose>-725.05 461.91 0.00 0.000 0.000 -1.134</pose></waypoint>
+      <waypoint><time>150.796</time><pose>-692.82 400.00 0.00 0.000 0.000 -1.047</pose></waypoint>
+      <waypoint><time>153.310</time><pose>-655.32 341.14 0.00 0.000 0.000 -0.960</pose></waypoint>
+      <waypoint><time>155.823</time><pose>-612.84 285.77 0.00 0.000 0.000 -0.873</pose></waypoint>
+      <waypoint><time>158.336</time><pose>-565.69 234.31 0.00 0.000 0.000 -0.785</pose></waypoint>
+      <waypoint><time>160.850</time><pose>-514.23 187.16 0.00 0.000 0.000 -0.698</pose></waypoint>
+      <waypoint><time>163.363</time><pose>-458.86 144.68 0.00 0.000 0.000 -0.611</pose></waypoint>
+      <waypoint><time>165.876</time><pose>-400.00 107.18 0.00 0.000 0.000 -0.524</pose></waypoint>
+      <waypoint><time>168.389</time><pose>-338.09 74.95 0.00 0.000 0.000 -0.436</pose></waypoint>
+      <waypoint><time>170.903</time><pose>-273.62 48.25 0.00 0.000 0.000 -0.349</pose></waypoint>
+      <waypoint><time>173.416</time><pose>-207.06 27.26 0.00 0.000 0.000 -0.262</pose></waypoint>
+      <waypoint><time>175.929</time><pose>-138.92 12.15 0.00 0.000 0.000 -0.175</pose></waypoint>
+      <waypoint><time>178.442</time><pose>-69.72 3.04 0.00 0.000 0.000 -0.087</pose></waypoint>
+      <waypoint><time>180.956</time><pose>-0.00 0.00 0.00 0.000 0.000 0.000</pose></waypoint>
+    </plugin>
+  </model>
+</sdf>

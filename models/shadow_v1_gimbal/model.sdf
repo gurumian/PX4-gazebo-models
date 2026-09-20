@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.10'>
+  <model name='shadow_v1_gimbal'>
+    <include merge='true'>
+      <uri>model://shadow_v1</uri>
+    </include>
+    <!-- OML dorsal hub is centered (x=y=0); quadtailsitter uses x=-0.064 for body.dae shelf. -->
+    <include merge='true'>
+      <uri>model://gimbal_v4l2</uri>
+      <pose relative_to='base_link'>0 0 0.01 0 1.5707 3.14159</pose>
+    </include>
+    <joint name="GimbalAttachJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>cgo3_mount_link</child>
+    </joint>
+  </model>
+</sdf>
