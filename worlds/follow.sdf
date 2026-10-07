@@ -49,8 +49,8 @@
       <diffuse>0.904 0.904 0.904 1</diffuse>
       <specular>0.271 0.271 0.271 1</specular>
     </light>
-    <!-- Walking person in front of the drone (+X). First gz start downloads the mesh from Fuel. -->
-    <actor name="person">
+    <!-- Walking person (+X). walk.dae has root X motion so legs animate with the trajectory (Gazebo actors doc). -->
+    <actor name="person_0">
       <skin>
         <filename>https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae</filename>
         <scale>1.0</scale>
