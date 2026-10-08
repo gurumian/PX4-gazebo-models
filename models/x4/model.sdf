@@ -75,11 +75,13 @@
     <plugin filename="MotorFailurePlugin"
       name="gz::sim::systems::MotorFailureSystem">
     </plugin>
-    <!-- Downward CGO3 on the front of the top plate. Yaw π turns the
-         native rearward camera to body +X. Lens lands near (0.11, 0, 0.07). -->
+    <!-- Downward CGO3 on the front of the top plate. Pitch 0, head hangs in -Z.
+         Lens and image look along camera_link -X. Measured with joints at 0:
+         include yaw 3π/2 puts that axis on body +Y (left); yaw π puts it on
+         body +X, the red nose marker. Airframe 4510 leaves SIM_GZ_MNT_* at 0. -->
     <include merge="true">
       <uri>model://gimbal_v4l2</uri>
-      <pose relative_to="base_link">0.07 0 0.23 0 0 3.1416</pose>
+      <pose relative_to="base_link">0.07 0 0.23 0 0 3.14159</pose>
     </include>
     <joint name="GimbalAttachJoint" type="fixed">
       <parent>base_link</parent>
