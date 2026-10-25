@@ -407,5 +407,171 @@
       <name>tugbot</name>
       <pose>2.75268 1.0014 0.132279 0 0 0</pose>
     </include>
+    <!-- person_1..3 walk the depot. About 1.0 m/s.
+         Each waypoint is the arrival pose. A repeated pose is a short stop.
+         Actors have no collision. -->
+    <actor name="person_1">
+      <skin>
+        <filename>model://MaleVisitorWalk/meshes/MaleVisitorWalk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walk">
+        <filename>model://MaleVisitorWalk/meshes/MaleVisitorWalk.dae</filename>
+        <interpolate_x>false</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.5</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walk" tension="0">
+          <waypoint>
+            <time>0.00</time>
+            <pose>-6.20 -5.30 0.90 0 0 0.0000</pose>
+          </waypoint>
+          <waypoint>
+            <time>27.60</time>
+            <pose>21.40 -5.30 0.90 0 0 1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>28.40</time>
+            <pose>21.40 -5.30 0.90 0 0 1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>41.00</time>
+            <pose>21.40 7.30 0.90 0 0 3.1416</pose>
+          </waypoint>
+          <waypoint>
+            <time>41.80</time>
+            <pose>21.40 7.30 0.90 0 0 3.1416</pose>
+          </waypoint>
+          <waypoint>
+            <time>69.40</time>
+            <pose>-6.20 7.30 0.90 0 0 -1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>70.20</time>
+            <pose>-6.20 7.30 0.90 0 0 -1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>82.80</time>
+            <pose>-6.20 -5.30 0.90 0 0 0.0000</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+    <actor name="person_2">
+      <skin>
+        <filename>model://FemaleVisitorWalk/meshes/FemaleVisitorWalk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walk">
+        <filename>model://FemaleVisitorWalk/meshes/FemaleVisitorWalk.dae</filename>
+        <interpolate_x>false</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>1.5</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walk" tension="0">
+          <waypoint>
+            <time>0.00</time>
+            <pose>-5.50 0.20 0.00 0 0 0.0000</pose>
+          </waypoint>
+          <waypoint>
+            <time>20.50</time>
+            <pose>15.00 0.20 0.00 0 0 1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>21.30</time>
+            <pose>15.00 0.20 0.00 0 0 1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>23.60</time>
+            <pose>15.00 2.50 0.00 0 0 3.1416</pose>
+          </waypoint>
+          <waypoint>
+            <time>24.40</time>
+            <pose>15.00 2.50 0.00 0 0 3.1416</pose>
+          </waypoint>
+          <waypoint>
+            <time>44.90</time>
+            <pose>-5.50 2.50 0.00 0 0 -1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>45.70</time>
+            <pose>-5.50 2.50 0.00 0 0 -1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>48.00</time>
+            <pose>-5.50 0.20 0.00 0 0 0.0000</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+    <actor name="person_3">
+      <skin>
+        <filename>model://VisitorKidWalk/meshes/VisitorKidWalk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walk">
+        <filename>model://VisitorKidWalk/meshes/VisitorKidWalk.dae</filename>
+        <interpolate_x>false</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>2.5</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walk" tension="0">
+          <waypoint>
+            <time>0.00</time>
+            <pose>-5.50 -4.80 0.00 0 0 0.0000</pose>
+          </waypoint>
+          <waypoint>
+            <time>11.30</time>
+            <pose>5.80 -4.80 0.00 0 0 1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>12.10</time>
+            <pose>5.80 -4.80 0.00 0 0 1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>19.90</time>
+            <pose>5.80 3.00 0.00 0 0 0.0000</pose>
+          </waypoint>
+          <waypoint>
+            <time>20.70</time>
+            <pose>5.80 3.00 0.00 0 0 0.0000</pose>
+          </waypoint>
+          <waypoint>
+            <time>30.50</time>
+            <pose>15.60 3.00 0.00 0 0 1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>31.30</time>
+            <pose>15.60 3.00 0.00 0 0 1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>35.20</time>
+            <pose>15.60 6.90 0.00 0 0 3.1416</pose>
+          </waypoint>
+          <waypoint>
+            <time>36.00</time>
+            <pose>15.60 6.90 0.00 0 0 3.1416</pose>
+          </waypoint>
+          <waypoint>
+            <time>57.10</time>
+            <pose>-5.50 6.90 0.00 0 0 -1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>57.90</time>
+            <pose>-5.50 6.90 0.00 0 0 -1.5708</pose>
+          </waypoint>
+          <waypoint>
+            <time>69.60</time>
+            <pose>-5.50 -4.80 0.00 0 0 0.0000</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
   </world>
 </sdf>
